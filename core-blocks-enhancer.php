@@ -17,7 +17,7 @@ defined('ABSPATH') || exit();
 
 class CoreBlockEnhancerPlugin {
 
-	const VERSION = '1.0.0';
+	const VERSION = '1.0.1';
 
 	/**
 	 * Store the instance of this class
