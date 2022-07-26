@@ -1,0 +1,7 @@
+{
+    "name": "wordpress/core-blocks-enhancer",
+    "description": "Core blocks enhancements",
+    "type": "wordpress-plugin",
+    "license": "proprietary",
+    "require": {}
+}

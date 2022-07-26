@@ -1,0 +1,17 @@
+stages:
+  - publish
+
+variables:
+  DOCKER_DRIVER: overlay
+  IGNORE: --ignore=composer.lock --ignore=vendor --ignore=.gitlab-ci.yml --ignore=.gitignore
+
+build:publish:
+  stage: publish
+  image: composer:1.10
+  script:
+    - composer global require elendev/nexus-composer-push --dev
+    - composer nexus-push --username=${COMPOSER_PUBLISHER_USER} --password=${COMPOSER_PUBLISHER_PASSWORD} --url=${REGISTRY_COMPOSER_WORDPRESS} ${CI_COMMIT_TAG} ${IGNORE}
+  rules:
+    - if: $CI_COMMIT_TAG
+      when: on_success
+    - when: never
