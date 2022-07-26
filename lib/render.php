@@ -167,7 +167,7 @@ class CoreBlockEnhancerRenderer {
 					$className .= ' with-icon--gradient';
 				}
 
-				$content = preg_replace('/class="wp-block-button__link /', "style=\"${iconStyle}\" class=\"wp-block-button__link ", $content);
+				$content = preg_replace('/class="wp-block-button__link/', "style=\"${iconStyle}\" class=\"wp-block-button__link", $content);
 			} else {
 				$context = [
 					'image' => $icon['id'],
@@ -182,7 +182,7 @@ class CoreBlockEnhancerRenderer {
 			$content = preg_replace('/div class="wp-block-button/', "div class=\"wp-block-button ${className}", $content);
 		}
 
-		$content = preg_replace('/<a (.*?)>(.*)<\/a>/', "<a $1>${leftIcon}<span class=\"wp-block-button__link-text\">$2</span>${rightIcon}</a>", $content);
+		$content = preg_replace('/<a (.*?)>(.*)<\/a>/', "<a $1>${leftIcon}<span class=\"wp-block-button__text\">$2</span>${rightIcon}</a>", $content);
 		return $content;
 	}
 }
