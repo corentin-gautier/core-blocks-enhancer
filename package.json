@@ -1,0 +1,23 @@
+{
+    "name": "core-blocks-enhancer",
+    "version": "1.0.0",
+    "description": "",
+    "main": "build/index.js",
+    "author": "Corentin Gautier",
+    "license": "ISC",
+    "devDependencies": {
+        "@wordpress/components": "*",
+        "@wordpress/element": "*",
+        "@wordpress/block-editor": "*",
+        "@wordpress/blocks": "*",
+        "@wordpress/i18n": "*",
+        "@wordpress/scripts": "*",
+        "rollup": "*"
+    },
+    "scripts": {
+        "build": "npm run build-blocks && npm run build-front",
+        "build-blocks": "npx wp-scripts build",
+        "build-front": "npx rollup ./src/front/main.js --format iife --compact --name \"coreBlocksEnhancer\" --file ./build/front.js"
+    },
+    "dependencies": {}
+}
