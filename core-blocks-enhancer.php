@@ -62,6 +62,8 @@ class CoreBlockEnhancerPlugin {
 
 	public function customize_core_blocks($block_content, $block)
 	{
+		if (!$block['blockName']) return $block_content;
+
 		$name = str_replace('/', '_', $block['blockName']);
 		$name = str_replace('-', '_', $name);
 
