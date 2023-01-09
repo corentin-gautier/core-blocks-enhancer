@@ -51,7 +51,7 @@ class CoreBlockEnhancerPlugin {
 		add_action('enqueue_block_editor_assets', array($this, 'add_scripts'));
 
 		add_filter('render_block', array($this, 'customize_core_blocks'), 10, 2);
-		add_filter('robots_txt', array($this, 'disallow_js'), 99, 2);
+		add_filter('robots_txt', array($this, 'disallow_js'), 999999, 2);
 	}
 
 	public function add_scripts()
