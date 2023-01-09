@@ -49,7 +49,9 @@ class CoreBlockEnhancerPlugin {
 
 		add_action('wp_enqueue_scripts', array($this, 'add_front_scripts'));
 		add_action('enqueue_block_editor_assets', array($this, 'add_scripts'));
+
 		add_filter('render_block', array($this, 'customize_core_blocks'), 10, 2);
+		add_filter('robots_txt', array($this, 'disallow_js'), 99, 2);
 	}
 
 	public function add_scripts()
@@ -81,6 +83,14 @@ class CoreBlockEnhancerPlugin {
 		}
 
 		return $block_content;
+	}
+
+	public function disallow_js($output, $public)
+	{
+		if (strpos($output, 'core-blocks-enhancer/build/front.js') === false) {
+			$output .= PHP_EOL . 'Disallow: /wp-content/plugins/core-blocks-enhancer/build/front.js' . PHP_EOL;
+		}
+		return $output;
 	}
 
 }
