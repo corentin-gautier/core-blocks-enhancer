@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.2](https://gitlab.consertotech.pro/lycanthrop/wordpress/core-blocks-enhancer/compare/v1.2.1...v1.2.2) (2023-01-09)
+
+
+### Bug Fixes
+
+* higher filter priority because of yoast ([b8e1580](https://gitlab.consertotech.pro/lycanthrop/wordpress/core-blocks-enhancer/commit/b8e158096f9fe057b4372b877679d036733ff841))
+
 ### [1.2.1](https://gitlab.consertotech.pro/lycanthrop/wordpress/core-blocks-enhancer/compare/v1.2.0...v1.2.1) (2023-01-09)
 
 
