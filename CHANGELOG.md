@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://gitlab.consertotech.pro/lycanthrop/wordpress/core-blocks-enhancer/compare/v1.1.1...v1.2.0) (2023-01-09)
+
+
+### Features
+
+* add automatic robots.txt rule ([da29f8b](https://gitlab.consertotech.pro/lycanthrop/wordpress/core-blocks-enhancer/commit/da29f8b825a813b87905f70cd0fb8c912433a30b))
+
 ### [1.1.1](https://gitlab.consertotech.pro/lycanthrop/wordpress/core-blocks-enhancer/compare/v1.1.0...v1.1.1) (2023-01-09)
 
 
