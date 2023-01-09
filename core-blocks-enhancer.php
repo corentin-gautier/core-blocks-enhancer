@@ -43,7 +43,7 @@ class CoreBlockEnhancerPlugin {
 		$this->version = CoreBlockEnhancerPlugin::VERSION;
 		$this->path = __FILE__;
 		$this->src_dir = plugin_dir_path($this->path);
-		$thos->src_dir_uri = plugin_dir_url($this->path);
+		$this->src_dir_uri = plugin_dir_url($this->path);
 
 		require_once 'lib/render.php';
 
