@@ -88,7 +88,7 @@ class CoreBlockEnhancerPlugin {
 	public function disallow_js($output, $public)
 	{
 		if (strpos($output, 'core-blocks-enhancer/build/front.js') === false) {
-			$output = $output . PHP_EOL . 'Disallow: /wp-content/plugins/core-blocks-enhancer/build/front.js' . PHP_EOL;
+			$output = $output . PHP_EOL . PHP_EOL . 'Disallow: /wp-content/plugins/core-blocks-enhancer/build/front.js' . PHP_EOL;
 		}
 		return $output;
 	}
