@@ -42,21 +42,28 @@ class CoreBlockEnhancerPlugin {
 	{
 		$this->version = CoreBlockEnhancerPlugin::VERSION;
 		$this->path = __FILE__;
+		$this->src_dir = plugin_dir_path($this->path);
+		$thos->src_dir_uri = plugin_dir_url($this->path);
 
 		require_once 'lib/render.php';
 
+		add_action('wp_enqueue_scripts', array($this, 'add_front_scripts'));
 		add_action('enqueue_block_editor_assets', array($this, 'add_scripts'));
 		add_filter('render_block', array($this, 'customize_core_blocks'), 10, 2);
 	}
 
 	public function add_scripts()
 	{
-		$src_dir = plugin_dir_path($this->path);
-		$src_dir_uri = plugin_dir_url($this->path);
-
-		if (is_file("{$src_dir}/build/index.js")) {
+		if (is_file("{$this->src_dir}/build/index.js")) {
 			$deps = [ 'wp-blocks', 'wp-dom', 'wp-dom-ready', 'wp-edit-post' ];
-			wp_enqueue_script('core-blocks-enhancer', "${src_dir_uri}build/index.js", $deps, $this->version, true);
+			wp_enqueue_script('core-blocks-enhancer', "{$this->src_dir_uri}build/index.js", $deps, $this->version, true);
+		}
+	}
+
+	public function add_front_scripts()
+	{
+		if (is_file("{$this->src_dir}/build/front.js")) {
+			wp_enqueue_script('core-blocks-enhancer-front', "{$this->src_dir_uri}build/front.js", null, $this->version, true);
 		}
 	}
 
