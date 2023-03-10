@@ -167,7 +167,11 @@ class CoreBlockEnhancerRenderer {
 					$className .= ' with-icon--gradient';
 				}
 
-				$content = preg_replace('/class="wp-block-button__link/', "style=\"${iconStyle}\" class=\"wp-block-button__link", $content);
+				if (strpos($content, 'style=')) {
+					$content = preg_replace('/style="/', "style=\"${iconStyle}", $content);
+				} else {
+					$content = preg_replace('/class="wp-block-button__link/', "style=\"${iconStyle}\" class=\"wp-block-button__link", $content);
+				}
 			} else {
 				$context = [
 					'image' => $icon['id'],
