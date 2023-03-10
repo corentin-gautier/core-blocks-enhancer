@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.5](https://gitlab.consertotech.pro/lycanthrop/wordpress/core-blocks-enhancer/compare/v1.2.4...v1.2.5) (2023-03-10)
+
+
+### Bug Fixes
+
+* allow using core styles on buttons ([2570ad0](https://gitlab.consertotech.pro/lycanthrop/wordpress/core-blocks-enhancer/commit/2570ad0c4d2f8f1547555413655d2e6d67a98ecc))
+
 ### [1.2.4](https://gitlab.consertotech.pro/lycanthrop/wordpress/core-blocks-enhancer/compare/v1.2.3...v1.2.4) (2023-01-09)
 
 
