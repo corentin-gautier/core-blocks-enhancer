@@ -1,13 +1,19 @@
 .wp-block-button {
+    --button-gap: 8px;
+
     &.with-icon {
         picture {
             flex-shrink: 0;
+
+            img {
+                vertical-align: top;
+            }
         }
 
         .wp-block-button__link {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: var(--button-gap);
 
             &::before, &::after {
                 font-size: var(--icon-size, 24px);
@@ -19,9 +25,22 @@
                 background-size: contain;
                 flex-shrink: 0;
             }
+
+            // Hack to use icons in the admin
+            &.rich-text {
+                gap: 0;
+
+                &::after {
+                    margin-left: var(--button-gap);
+                }
+
+                &::before {
+                    margin-right: var(--button-gap);
+                }
+            }
         }
 
-        &--svg-xml.with-icon--replace {
+        &--svg-xml:not(.with-icon--native-colors) {
             .wp-block-button__link {
                 &::before, &::after {
                     height: 0;

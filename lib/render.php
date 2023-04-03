@@ -150,6 +150,8 @@ class CoreBlockEnhancerRenderer {
 			$icon = $attrs['icon'];
 			$iconHtml = null;
 
+			// print_r($attrs);
+
 			$className = "with-icon with-icon--${iconPlacement}";
 			$iconSize = isset($attrs['iconSize']) ? $attrs['iconSize'] : 24;
 			$iconGradient = isset($attrs['iconGradient']) ? $attrs['iconGradient'] : 'none';
@@ -162,6 +164,10 @@ class CoreBlockEnhancerRenderer {
 				CSS;
 
 				$className .= ' with-icon--svg-xml';
+
+				if (isset($attrs['iconUseNativeColors']) && $attrs['iconUseNativeColors']) {
+					$className .= ' with-icon--native-colors';
+				}
 
 				if ($iconGradient !== 'none') {
 					$className .= ' with-icon--gradient';

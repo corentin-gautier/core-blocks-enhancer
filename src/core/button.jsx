@@ -14,7 +14,7 @@ import IconSettings from '../custom/icon-settings';
 class ButtonModifier extends BlockModifier {
   getEditorRender(BlockListBlock, props) {
     const { attributes } = props;
-    const { iconPlacement, icon, iconSize, iconColor, iconGradient, iconReplaceColors } = attributes;
+    const { iconPlacement, icon, iconSize, iconColor, iconGradient, iconUseNativeColors } = attributes;
 
     const wrapperProps = {
       ...props.wrapperProps
@@ -31,7 +31,7 @@ class ButtonModifier extends BlockModifier {
       const type = icon.subtype.replace('+', '-');
       const classes = classNames(
         'with-icon',
-        { 'with-icon--replace': iconReplaceColors },
+        { 'with-icon--native-colors': iconUseNativeColors },
         'with-icon--' + type,
         'with-icon--' + placement,
         { 'with-icon--gradient': !!iconGradient }
@@ -76,7 +76,7 @@ class ButtonModifier extends BlockModifier {
               iconSize: undefined,
               iconColor: undefined,
               iconGradient: undefined,
-              iconReplaceColors: undefined
+              iconUseNativeColors: undefined
             })}
             label={__('Button icon', 'core-blocks-enhancer')}>
             <MediaUploadCheck>
@@ -117,5 +117,5 @@ new ButtonModifier('core-blocks-enhancer/button', ['core/button'], {
   iconSize: { type: 'number' },
   iconColor: { type: 'string' },
   iconGradient: { type: 'string' },
-  iconReplaceColors: { type: 'boolean', default: true },
+  iconUseNativeColors: { type: 'boolean', default: false },
 });

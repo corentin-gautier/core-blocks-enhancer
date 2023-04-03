@@ -17,7 +17,7 @@ import { useMultipleOriginColorsAndGradients as AltUseMultipleOriginColorsAndGra
 
 export default function IconSettings(props) {
   const { attributes, setAttributes, clientId, onClickMedia } = props;
-  const { iconPlacement, icon, iconSize, iconColor, iconGradient, iconReplaceColors } = attributes;
+  const { iconPlacement, icon, iconSize, iconColor, iconGradient, iconUseNativeColors } = attributes;
 
   const buttonText = !!icon ? __('Change image', 'core-blocks-enhancer') : __('Open media library', 'core-blocks-enhancer');
 
@@ -35,7 +35,7 @@ export default function IconSettings(props) {
               iconPlacement: undefined,
               iconColor: undefined,
               iconGradient: undefined,
-              iconReplaceColors: undefined
+              iconUseNativeColors: undefined
             })}
             label={__('Icon', 'core-blocks-enhancer')}
             isShownByDefault
@@ -57,29 +57,29 @@ export default function IconSettings(props) {
           {icon.subtype === 'svg+xml' && (
             <>
               <ToolsPanelItem
-                hasValue={() => iconReplaceColors}
+                hasValue={() => iconUseNativeColors}
                 onDeselect={() => setAttributes({
-                  iconReplaceColors: false
+                  iconUseNativeColors: false
                 })}
                 label={__('Replace SVG colors', 'core-blocks-enhancer')}
                 isShownByDefault>
                 <ToggleControl
-                  label="Replace colors"
+                  label="Don't replace colors"
                   help={
-                    iconReplaceColors
-                      ? 'Replace the svg colors'
-                      : 'Use the svg native colors'
+                    iconUseNativeColors
+                      ? 'Use the svg native colors'
+                      : 'Replace the svg colors'
                   }
-                  checked={iconReplaceColors}
+                  checked={iconUseNativeColors}
                   onChange={(value) => {
                     setAttributes({
-                      iconReplaceColors: value
+                      iconUseNativeColors: value
                     })
                   }}
                 />
               </ToolsPanelItem>
 
-              {iconReplaceColors && (
+              {!iconUseNativeColors && (
                 <div style={{ borderTop: '1px solid #0000001a', gridColumn: 'span 2' }}>
                   <ColorGradientSettingsDropdown
                     className={'first'}
