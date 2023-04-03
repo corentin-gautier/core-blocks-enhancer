@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://gitlab.consertotech.pro/lycanthrop/wordpress/core-blocks-enhancer/compare/v1.2.5...v1.3.0) (2023-04-03)
+
+
+### Features
+
+* **button:** add button icon svg color override option ([909fc72](https://gitlab.consertotech.pro/lycanthrop/wordpress/core-blocks-enhancer/commit/909fc72011d4a95464a858323b03148b0d5945cc))
+
 ### [1.2.5](https://gitlab.consertotech.pro/lycanthrop/wordpress/core-blocks-enhancer/compare/v1.2.4...v1.2.5) (2023-03-10)
 
 
