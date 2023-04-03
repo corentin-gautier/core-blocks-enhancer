@@ -17,7 +17,7 @@ defined('ABSPATH') || exit();
 
 class CoreBlockEnhancerPlugin {
 
-	const VERSION = '1.2.5';
+	const VERSION = '1.3.1';
 
 	/**
 	 * Store the instance of this class
@@ -71,7 +71,7 @@ class CoreBlockEnhancerPlugin {
 		if (is_file("{$this->src_dir}/build/index.css")) {
 			wp_enqueue_style('core-blocks-enhancer', "{$this->src_dir_uri}build/index.css", null, $this->version);
 		}
-		
+
 		if (is_file("{$this->src_dir}/build/front.js")) {
 			wp_enqueue_script('core-blocks-enhancer-front', "{$this->src_dir_uri}build/front.js", null, $this->version, true);
 		}
