@@ -53,17 +53,25 @@ class CoreBlockEnhancerPlugin {
 		add_filter('render_block', array($this, 'customize_core_blocks'), 10, 2);
 		add_filter('robots_txt', array($this, 'disallow_js'), 999999, 2);
 	}
-
+	
 	public function add_scripts()
 	{
+		if (is_file("{$this->src_dir}/build/index.css")) {
+			wp_enqueue_style('core-blocks-enhancer', "{$this->src_dir_uri}build/index.css", null, $this->version);
+		}
+		
 		if (is_file("{$this->src_dir}/build/index.js")) {
 			$deps = [ 'wp-blocks', 'wp-dom', 'wp-dom-ready', 'wp-edit-post' ];
 			wp_enqueue_script('core-blocks-enhancer', "{$this->src_dir_uri}build/index.js", $deps, $this->version, true);
 		}
 	}
-
+	
 	public function add_front_scripts()
 	{
+		if (is_file("{$this->src_dir}/build/index.css")) {
+			wp_enqueue_style('core-blocks-enhancer', "{$this->src_dir_uri}build/index.css", null, $this->version);
+		}
+		
 		if (is_file("{$this->src_dir}/build/front.js")) {
 			wp_enqueue_script('core-blocks-enhancer-front', "{$this->src_dir_uri}build/front.js", null, $this->version, true);
 		}

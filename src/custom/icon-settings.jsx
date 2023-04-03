@@ -5,6 +5,7 @@ import {
 import {
   FontSizePicker,
   Button, ButtonGroup,
+  ToggleControl,
   __experimentalToolsPanelItem as ToolsPanelItem,
   __experimentalToggleGroupControl as ToggleGroupControl,
   __experimentalToggleGroupControlOption as ToggleGroupControlOption
@@ -16,9 +17,9 @@ import { useMultipleOriginColorsAndGradients as AltUseMultipleOriginColorsAndGra
 
 export default function IconSettings(props) {
   const { attributes, setAttributes, clientId, onClickMedia } = props;
-  const { iconPlacement, icon, iconSize, iconColor, iconGradient } = attributes;
+  const { iconPlacement, icon, iconSize, iconColor, iconGradient, iconReplaceColors } = attributes;
 
-  const buttonText = !!icon ? __('Change image', 'demo') : __('Open media library', 'demo');
+  const buttonText = !!icon ? __('Change image', 'core-blocks-enhancer') : __('Open media library', 'core-blocks-enhancer');
 
   const colorSettings = (useMultipleOriginColorsAndGradients || AltUseMultipleOriginColorsAndGradients)();
 
@@ -33,47 +34,75 @@ export default function IconSettings(props) {
               iconSize: undefined,
               iconPlacement: undefined,
               iconColor: undefined,
-              iconGradient: undefined
+              iconGradient: undefined,
+              iconReplaceColors: undefined
             })}
-            label={__('Icon', 'demo')}
+            label={__('Icon', 'core-blocks-enhancer')}
             isShownByDefault
             style={{ gridColumn: 'span 2', display: 'flex', alignItems: 'center', gap: '18px' }}>
-            <img onClick={onClickMedia} src={icon.sizes.thumbnail.url} width={icon.width} style={{ maxWidth: '50px', width: '100%', cursor: 'pointer', padding: '4px', border: '1px solid rgba(0,0,0,.1)', borderRadius: '2px' }} />
+            <img onClick={onClickMedia} src={icon.sizes.full.url} width={icon.width} style={{ maxWidth: '50px', width: '100%', cursor: 'pointer', padding: '4px', border: '1px solid rgba(0,0,0,.1)', borderRadius: '2px' }} />
             <ToggleGroupControl
-              label={__('Placement', 'demo')}
+              label={__('Placement', 'core-blocks-enhancer')}
               value={iconPlacement || 'left'}
               onChange={(value) => {
                 setAttributes({
                   iconPlacement: value
                 })
               }}>
-              <ToggleGroupControlOption value="left" label={__('Left', 'demo')}></ToggleGroupControlOption>
-              <ToggleGroupControlOption value="right" label={__('Right', 'demo')}></ToggleGroupControlOption>
+              <ToggleGroupControlOption value="left" label={__('Left', 'core-blocks-enhancer')}></ToggleGroupControlOption>
+              <ToggleGroupControlOption value="right" label={__('Right', 'core-blocks-enhancer')}></ToggleGroupControlOption>
             </ToggleGroupControl>
           </ToolsPanelItem>
 
           {icon.subtype === 'svg+xml' && (
-            <div style={{ borderTop: '1px solid #0000001a', gridColumn: 'span 2' }}>
-              <ColorGradientSettingsDropdown
-                className={'first'}
-                __experimentalHasMultipleOrigins
-                __experimentalIsRenderedInSidebar
+            <>
+              <ToolsPanelItem
+                hasValue={() => iconReplaceColors}
                 onDeselect={() => setAttributes({
-                  iconColor: undefined,
-                  iconGradient: undefined
+                  iconReplaceColors: false
                 })}
-                settings={[
-                  {
-                    label: __('Icon Color', 'demo'),
-                    colorValue: iconColor,
-                    gradientValue: iconGradient,
-                    onColorChange: (c) => setAttributes({ iconColor: c }),
-                    onGradientChange: (v) => setAttributes({ iconGradient: v })
+                label={__('Replace SVG colors', 'core-blocks-enhancer')}
+                isShownByDefault>
+                <ToggleControl
+                  label="Replace colors"
+                  help={
+                    iconReplaceColors
+                      ? 'Replace the svg colors'
+                      : 'Use the svg native colors'
                   }
-                ]}
-                {...colorSettings}
-              />
-            </div>
+                  checked={iconReplaceColors}
+                  onChange={(value) => {
+                    setAttributes({
+                      iconReplaceColors: value
+                    })
+                  }}
+                />
+              </ToolsPanelItem>
+
+              {iconReplaceColors && (
+                <div style={{ borderTop: '1px solid #0000001a', gridColumn: 'span 2' }}>
+                  <ColorGradientSettingsDropdown
+                    className={'first'}
+                    __experimentalHasMultipleOrigins
+                    __experimentalIsRenderedInSidebar
+                    onDeselect={() => setAttributes({
+                      iconColor: undefined,
+                      iconGradient: undefined
+                    })}
+                    settings={[
+                      {
+                        label: __('Icon Color', 'core-blocks-enhancer'),
+                        colorValue: iconColor,
+                        gradientValue: iconGradient,
+                        onColorChange: (c) => setAttributes({ iconColor: c }),
+                        onGradientChange: (v) => setAttributes({ iconGradient: v })
+                      }
+                    ]}
+                    {...colorSettings}
+                  />
+                </div>
+              )}
+            </>
           )}
 
           <ToolsPanelItem
@@ -81,9 +110,10 @@ export default function IconSettings(props) {
             onDeselect={() => setAttributes({
               iconSize: undefined
             })}
-            label={__('Icon Size', 'demo')}
+            label={__('Icon Size', 'core-blocks-enhancer')}
             isShownByDefault>
             <FontSizePicker
+              __nextHasNoMarginBottom="true"
               fallbackFontSize={24}
               value={(iconSize || 24)}
               fontSizes={[

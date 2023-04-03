@@ -17,11 +17,11 @@ class ObfuscateOption extends BlockModifier {
         <BlockEdit {...props} />
         <InspectorControls>
           <PanelBody
-            title={__('SEO Options', 'demo')}
+            title={__('SEO Options', 'core-blocks-enhancer')}
           >
             <ToggleControl
-              label={__('Obfuscate', 'demo')}
-              help={__('Remove the link for the robots', 'demo')}
+              label={__('Obfuscate', 'core-blocks-enhancer')}
+              help={__('Remove the link for the robots', 'core-blocks-enhancer')}
               checked={obfuscate}
               onChange={(value) => {
                 setAttributes({
@@ -42,4 +42,4 @@ const customSettings = {
   obfuscate: { type: 'boolean' }
 };
 
-new ObfuscateOption('demo/obfuscate', allowedBlocks, customSettings);
+new ObfuscateOption('core-blocks-enhancer/obfuscate', allowedBlocks, customSettings);

@@ -14,7 +14,7 @@ import IconSettings from '../custom/icon-settings';
 class ButtonModifier extends BlockModifier {
   getEditorRender(BlockListBlock, props) {
     const { attributes } = props;
-    const { iconPlacement, icon, iconSize, iconColor, iconGradient } = attributes;
+    const { iconPlacement, icon, iconSize, iconColor, iconGradient, iconReplaceColors } = attributes;
 
     const wrapperProps = {
       ...props.wrapperProps
@@ -22,7 +22,7 @@ class ButtonModifier extends BlockModifier {
 
     if (icon && icon.id) {
       wrapperProps.style = {
-        '--icon': 'url(' + icon.sizes.thumbnail.url + ')',
+        '--icon': 'url(' + icon.sizes?.full?.url + ')',
         '--icon-size': (iconSize || 24) + 'px',
         '--icon-border': '1em solid' + (iconColor ? ' ' + iconColor : ''),
         '--icon-gradient': iconGradient
@@ -31,6 +31,7 @@ class ButtonModifier extends BlockModifier {
       const type = icon.subtype.replace('+', '-');
       const classes = classNames(
         'with-icon',
+        { 'with-icon--replace': iconReplaceColors },
         'with-icon--' + type,
         'with-icon--' + placement,
         { 'with-icon--gradient': !!iconGradient }
@@ -53,11 +54,11 @@ class ButtonModifier extends BlockModifier {
         <BlockEdit {...props} />
         <InspectorControls>
           <PanelBody
-            title={__('Accessibility', 'demo')}
+            title={__('Accessibility', 'core-blocks-enhancer')}
           >
             <TextareaControl
-              label={__('Button label', 'demo')}
-              help={__('Adds an Aria label to the button', 'demo')}
+              label={__('Button label', 'core-blocks-enhancer')}
+              help={__('Adds an Aria label to the button', 'core-blocks-enhancer')}
               value={alt}
               onChange={(value) => {
                 setAttributes({
@@ -74,9 +75,10 @@ class ButtonModifier extends BlockModifier {
               icon: undefined,
               iconSize: undefined,
               iconColor: undefined,
-              iconGradient: undefined
+              iconGradient: undefined,
+              iconReplaceColors: undefined
             })}
-            label={__('Button icon', 'demo')}>
+            label={__('Button icon', 'core-blocks-enhancer')}>
             <MediaUploadCheck>
               <MediaUpload
                 onSelect={(media) => {
@@ -108,11 +110,12 @@ class ButtonModifier extends BlockModifier {
   }
 }
 
-new ButtonModifier('demo/button', ['core/button'], {
+new ButtonModifier('core-blocks-enhancer/button', ['core/button'], {
   alt: { type: 'text' },
   iconPlacement: { type: 'text', default: 'left' },
   icon: { type: 'object' },
   iconSize: { type: 'number' },
   iconColor: { type: 'string' },
-  iconGradient: { type: 'string' }
+  iconGradient: { type: 'string' },
+  iconReplaceColors: { type: 'boolean', default: true },
 });

@@ -15,19 +15,19 @@ class TitlesModifier extends BlockModifier {
         <BlockEdit {...props} />
         <InspectorControls>
           <PanelBody
-            title={__('Accessibility Options', 'demo')}
+            title={__('Accessibility Options', 'core-blocks-enhancer')}
           >
             <SelectControl
-              label={__('Override the heading level with Aria', 'demo')}
+              label={__('Override the heading level with Aria', 'core-blocks-enhancer')}
               value={headingLevel}
               options={[
                 {
                   value: '',
-                  label: __("Select an Option", 'demo')
+                  label: __("Select an Option", 'core-blocks-enhancer')
                 },
                 {
                   value: '0',
-                  label: __('None (role presentation)', 'demo')
+                  label: __('None (role presentation)', 'core-blocks-enhancer')
                 },
                 {
                   value: '1',
@@ -67,6 +67,6 @@ class TitlesModifier extends BlockModifier {
   }
 }
 
-new TitlesModifier('demo/heading', ['core/heading'], {
+new TitlesModifier('core-blocks-enhancer/heading', ['core/heading'], {
   headingLevel: { type: 'string' }
 });

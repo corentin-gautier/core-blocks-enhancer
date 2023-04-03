@@ -15,11 +15,11 @@ class ImageModifier extends BlockModifier {
         <BlockEdit {...props} />
         <InspectorControls>
           <PanelBody
-            title={__('SEO Options', 'demo')}
+            title={__('SEO Options', 'core-blocks-enhancer')}
           >
             <ToggleControl
-              label={__('Use for ranking', 'demo')}
-              help={__('Adds aria-hidden="true" to an illustrative image allowing the use of the alt text for ranking purposes', 'demo')}
+              label={__('Use for ranking', 'core-blocks-enhancer')}
+              help={__('Adds aria-hidden="true" to an illustrative image allowing the use of the alt text for ranking purposes', 'core-blocks-enhancer')}
               checked={useForSeoRanking}
               onChange={(value) => {
                 setAttributes({
@@ -44,4 +44,4 @@ const customSettings = {
   useForSeoRanking: { type: 'boolean' }
 };
 
-new ImageModifier('demo/images', allowedBlocks, customSettings);
+new ImageModifier('core-blocks-enhancer/images', allowedBlocks, customSettings);
