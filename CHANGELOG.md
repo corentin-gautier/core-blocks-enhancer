@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.3](https://gitlab.consertotech.pro/lycanthrop/wordpress/core-blocks-enhancer/compare/v1.3.2...v1.3.3) (2023-04-06)
+
+
+### Bug Fixes
+
+* widget screen error because of wp-edit-post dependency ([421e833](https://gitlab.consertotech.pro/lycanthrop/wordpress/core-blocks-enhancer/commit/421e8337208270c173bc138e606503885cf72069))
+
 ### [1.3.2](https://gitlab.consertotech.pro/lycanthrop/wordpress/core-blocks-enhancer/compare/v1.3.1...v1.3.2) (2023-04-03)
 
 
