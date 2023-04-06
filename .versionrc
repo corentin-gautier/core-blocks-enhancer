@@ -1,7 +1,7 @@
 {
     "bumpFiles": [
         {
-            "filename": "src/core-blocks-enhancer.php",
+            "filename": "core-blocks-enhancer.php",
             "updater": "updater.js"
         },
         {
