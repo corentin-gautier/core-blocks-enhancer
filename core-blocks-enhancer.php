@@ -54,12 +54,6 @@ class CoreBlockEnhancerPlugin {
 	
 	public function add_scripts()
 	{
-		global $pagenow;
-
-		if ($pagenow === 'widgets.php') {
-			return;
-		}
-
 		if (is_file("{$this->src_dir}/build/index.css")) {
 			wp_enqueue_style('core-blocks-enhancer', "{$this->src_dir_uri}build/index.css", null, $this->version);
 		}
