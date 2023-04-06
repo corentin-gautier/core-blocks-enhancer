@@ -5,7 +5,7 @@
  * @wordpress-plugin
  * Plugin Name: 		Core Blocks Enhancer
  * Description: 		Adds features to core blocks (accessibility, seo and button icons)
- * Version: 			1.3.3
+ * Version: 1.3.3
  * Requires PHP:		7.4
  * Text Domain: 		core-blocks-enhancer
  * Domain Path: 		/languages
@@ -16,8 +16,6 @@
 defined('ABSPATH') || exit();
 
 class CoreBlockEnhancerPlugin {
-
-	const VERSION = '1.3.3';
 
 	/**
 	 * Store the instance of this class
@@ -40,7 +38,7 @@ class CoreBlockEnhancerPlugin {
 
 	function __construct()
 	{
-		$this->version = CoreBlockEnhancerPlugin::VERSION;
+		$this->version = get_plugin_data( __FILE__ )['Version'];
 		$this->path = __FILE__;
 		$this->src_dir = plugin_dir_path($this->path);
 		$this->src_dir_uri = plugin_dir_url($this->path);

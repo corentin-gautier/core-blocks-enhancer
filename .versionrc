@@ -1,0 +1,16 @@
+{
+    "bumpFiles": [
+        {
+            "filename": "src/core-blocks-enhancer.php",
+            "updater": "updater.js"
+        },
+        {
+            "filename": "composer.json",
+            "type": "json"
+        },
+        {
+            "filename": "package.json",
+            "type": "json"
+        }
+    ]
+}
