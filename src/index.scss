@@ -29,15 +29,33 @@
             // Hack to use icons in the admin
             &.rich-text {
                 gap: 0;
+                display: inline-block;
 
-                &::after {
-                    margin-left: var(--button-gap);
+                &::before, &::after {
+                    float: left;
                 }
 
                 &::before {
                     margin-right: var(--button-gap);
                 }
+
+                &::after {
+                    margin-left: var(--button-gap);
+                }
             }
+
+        }
+
+        &--right .wp-block-button__link.rich-text {
+            &::before {
+                content: '';
+                float: right;
+            }
+
+            &:after {
+                content: none;
+            }
+
         }
 
         &--svg-xml:not(.with-icon--native-colors) {
