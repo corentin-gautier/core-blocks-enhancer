@@ -15,6 +15,7 @@
         "rollup": "*"
     },
     "scripts": {
+        "test": "wp-env start",
         "build": "npm run build-blocks && npm run build-front",
         "build-blocks": "npx wp-scripts build",
         "build-front": "npx rollup ./src/front/main.js --format iife --compact --name \"coreBlocksEnhancer\" --file ./build/front.js"

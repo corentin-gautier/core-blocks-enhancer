@@ -24,6 +24,11 @@ class CoreBlockEnhancerPlugin {
 	 */
 	protected static $instance;
 
+	public $version;
+	private $path;
+	private $src_dir;
+	private $src_dir_uri;
+
 	/**
 	 * Singleton
 	 *
@@ -86,7 +91,7 @@ class CoreBlockEnhancerPlugin {
 		$name = str_replace('/', '_', $block['blockName']);
 		$name = str_replace('-', '_', $name);
 
-		$method = "render_${name}";
+		$method = "render_{$name}";
 
 		if (method_exists('CoreBlockEnhancerRenderer', $method)) {
 			$block_content = CoreBlockEnhancerRenderer::$method($block_content, $block);
