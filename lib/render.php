@@ -85,9 +85,9 @@ class CoreBlockEnhancerRenderer {
 		if ( isset($block['attrs']['headingLevel']) ) {
 			$level = $block['attrs']['headingLevel'];
 			$role = (int)$level === 0 ? "presentation" : "heading";
-			$alevel = $role === 'heading' ? "aria-level=${level}" : "";
+			$alevel = $role === 'heading' ? "aria-level={$level}" : "";
 
-			$content = preg_replace('/<h([1-6])(.*?)>(.*)<\/h([1-6])>/', "<h$1 $2 role='${role}' ${alevel}>$3</h$1>", $content);
+			$content = preg_replace('/<h([1-6])(.*?)>(.*)<\/h([1-6])>/', "<h$1 $2 role='{$role}' {$alevel}>$3</h$1>", $content);
 		}
 		return $content;
 	}
@@ -139,7 +139,7 @@ class CoreBlockEnhancerRenderer {
 
 		if (isset($attrs['alt']) && !empty($attrs['alt'])) {
 			$alt = $attrs['alt'];
-			$content = preg_replace('/<a (.*?)>/', "<a aria-label=\"${alt}\" $1>", $content);
+			$content = preg_replace('/<a (.*?)>/', "<a aria-label=\"{$alt}\" $1>", $content);
 		}
 
 		$leftIcon = '';
@@ -152,7 +152,7 @@ class CoreBlockEnhancerRenderer {
 
 			// print_r($attrs);
 
-			$className = "with-icon with-icon--${iconPlacement}";
+			$className = "with-icon with-icon--{$iconPlacement}";
 			$iconSize = isset($attrs['iconSize']) ? $attrs['iconSize'] : 24;
 			$iconGradient = isset($attrs['iconGradient']) ? $attrs['iconGradient'] : 'none';
 			$iconBorder = isset($attrs['iconColor']) ? '1em solid ' . $attrs['iconColor'] : '1em solid';
@@ -160,7 +160,7 @@ class CoreBlockEnhancerRenderer {
 			if ($icon['subtype'] === 'svg+xml') {
 				$url = $icon['url'];
 				$iconStyle = <<<CSS
-				--icon: url(${url});--icon-size: ${iconSize}px;--icon-border: ${iconBorder};--icon-gradient: ${iconGradient};
+				--icon: url({$url});--icon-size: {$iconSize}px;--icon-border: {$iconBorder};--icon-gradient: {$iconGradient};
 				CSS;
 
 				$className .= ' with-icon--svg-xml';
@@ -174,9 +174,9 @@ class CoreBlockEnhancerRenderer {
 				}
 
 				if (strpos($content, 'style=')) {
-					$content = preg_replace('/style="/', "style=\"${iconStyle}", $content);
+					$content = preg_replace('/style="/', "style=\"{$iconStyle}", $content);
 				} else {
-					$content = preg_replace('/class="wp-block-button__link/', "style=\"${iconStyle}\" class=\"wp-block-button__link", $content);
+					$content = preg_replace('/class="wp-block-button__link/', "style=\"{$iconStyle}\" class=\"wp-block-button__link", $content);
 				}
 			} else {
 				$context = [
@@ -189,10 +189,32 @@ class CoreBlockEnhancerRenderer {
 				$iconPlacement === 'right' ? $rightIcon = $iconHtml : $leftIcon = $iconHtml;
 			}
 
-			$content = preg_replace('/div class="wp-block-button/', "div class=\"wp-block-button ${className}", $content);
+			$content = preg_replace('/div class="wp-block-button/', "div class=\"wp-block-button {$className}", $content);
 		}
 
-		$content = preg_replace('/<a (.*?)>(.*)<\/a>/', "<a $1>${leftIcon}<span class=\"wp-block-button__text\">$2</span>${rightIcon}</a>", $content);
+		$content = preg_replace('/<a (.*?)>(.*)<\/a>/', "<a $1>{$leftIcon}<span class=\"wp-block-button__text\">$2</span>{$rightIcon}</a>", $content);
+		return $content;
+	}
+
+	/**
+	 * Replaces youtube iframes by a placeholder
+	 * Avoids loading youtube libs at startup
+	 *
+	 * @param string $content
+	 * @param array $block
+	 * @return void
+	 */
+	public static function render_core_embed($content, $block) {
+		if ($block['attrs']['providerNameSlug'] == 'youtube') {
+
+			$link = $block['attrs']['url'];
+			$title = __('View video', 'core-blocks-enhancer');
+			
+			$html = "<a title=\"{$title}\" is=\"better-youtube\" href=\"{$link}\" target=\"_blank\" data-frameborder=\"0\" data-allowfullscreen data-allow=\"fullscreen; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\">{$title}</a>";
+
+			$content = preg_replace('/<iframe (.*?)\/iframe>/', $html, $content);
+		}
+
 		return $content;
 	}
 }

@@ -1,3 +1,5 @@
-import { registerObflink } from './obflink';
+import { ObfLink } from './obflink';
+import { BetterYoutube } from './better-youtube';
 
-registerObflink();
+ObfLink.registerElement();
+BetterYoutube.registerElement();
