@@ -32,7 +32,8 @@
                 display: inline-block;
 
                 &::before, &::after {
-                    float: left;
+                    display: inline-block;
+                    vertical-align: middle;
                 }
 
                 &::before {
@@ -47,12 +48,11 @@
         }
 
         &--right .wp-block-button__link.rich-text {
-            &::before {
+            &::after {
                 content: '';
-                float: right;
             }
 
-            &:after {
+            &:before {
                 content: none;
             }
 
