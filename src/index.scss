@@ -33,11 +33,9 @@
             // Hack to use icons in the admin
             &.rich-text {
                 gap: 0;
-                display: inline-block;
 
                 &::before, &::after {
-                    display: inline-block;
-                    vertical-align: middle;
+                    display: block;
                 }
 
                 &::before {
