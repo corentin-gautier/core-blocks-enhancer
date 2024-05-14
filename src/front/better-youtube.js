@@ -16,11 +16,14 @@ export class BetterYoutube extends HTMLAnchorElement {
   connectedCallback() {
     this.#parent = this.parentNode;
     this.#URL = new URL(this.getAttribute('href'));
-    this.#ID = this.#URL.search.split('?v=')[1];
 
-    this.#isSufficientConnection = parseInt(navigator.connection.effectiveType, 10) > 3;
+    this.#ID = this.#URL.host === 'youtu.be' ? this.#URL.pathname.substr(1) : this.#URL.search.split('?v=')[1];
 
-    this.#showUI();
+    if (this.#ID) {
+      this.#isSufficientConnection = parseInt(navigator.connection.effectiveType, 10) > 3;
+      this.#showUI();
+    }
+
   }
 
   #showUI() {
