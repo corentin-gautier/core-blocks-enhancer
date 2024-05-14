@@ -60,7 +60,7 @@ export class BetterYoutube extends HTMLAnchorElement {
     this.style.display = 'none';
     this.#iframe = document.createElement('iframe');
     this.#iframe.frameBorder = 0;
-    this.#iframe.src = this.#URL.origin + '/embed/' + this.#ID + '?autoplay=1';
+    this.#iframe.src = 'https://www.youtube.com/embed/' + this.#ID + '?autoplay=1';
 
     for (const key in this.#options) {
       this.#iframe.setAttribute(key, this.#options[key]);
