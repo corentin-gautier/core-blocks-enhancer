@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.7](https://gitlab.consertotech.pro/lycanthrop/wordpress/core-blocks-enhancer/compare/v1.4.6...v1.4.7) (2024-05-14)
+
+
+### Bug Fixes
+
+* youtube iframe base url ([063a436](https://gitlab.consertotech.pro/lycanthrop/wordpress/core-blocks-enhancer/commit/063a4365ed510ef57808da713b1fd30e9239c8a9))
+
 ### [1.4.6](https://gitlab.consertotech.pro/lycanthrop/wordpress/core-blocks-enhancer/compare/v1.4.5...v1.4.6) (2024-05-14)
 
 
