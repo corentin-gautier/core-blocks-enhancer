@@ -79,8 +79,8 @@ class CoreBlockEnhancerPlugin {
 			wp_enqueue_style('core-blocks-enhancer', "{$this->src_dir_uri}build/index.css", null, $this->version);
 		}
 
-		if (is_file("{$this->src_dir}/build/front.js")) {
-			wp_enqueue_script('core-blocks-enhancer-front', "{$this->src_dir_uri}build/front.js", null, $this->version, true);
+		if (is_file("{$this->src_dir}/build/front.min.js")) {
+			wp_enqueue_script('core-blocks-enhancer-front', "{$this->src_dir_uri}build/front.min.js", null, $this->version, true);
 		}
 	}
 
