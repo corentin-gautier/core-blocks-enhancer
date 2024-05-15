@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.8](https://gitlab.consertotech.pro/lycanthrop/wordpress/core-blocks-enhancer/compare/v1.4.7...v1.4.8) (2024-05-15)
+
+
+### Bug Fixes
+
+* minify front script ([dae95ba](https://gitlab.consertotech.pro/lycanthrop/wordpress/core-blocks-enhancer/commit/dae95ba14feeedf6bb4b6c87b91fd4ec7d0d8709))
+
 ### [1.4.7](https://gitlab.consertotech.pro/lycanthrop/wordpress/core-blocks-enhancer/compare/v1.4.6...v1.4.7) (2024-05-14)
 
 
