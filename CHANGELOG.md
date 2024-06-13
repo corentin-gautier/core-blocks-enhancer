@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.9](https://gitlab.consertotech.pro/lycanthrop/wordpress/core-blocks-enhancer/compare/v1.4.8...v1.4.9) (2024-06-13)
+
+
+### Bug Fixes
+
+* remove button admin fix ([1db358a](https://gitlab.consertotech.pro/lycanthrop/wordpress/core-blocks-enhancer/commit/1db358ad2c35e507c666fac065027875f3029a3e))
+
 ### [1.4.8](https://gitlab.consertotech.pro/lycanthrop/wordpress/core-blocks-enhancer/compare/v1.4.7...v1.4.8) (2024-05-15)
 
 
