@@ -1,9 +1,9 @@
 .wp-block-button {
     --button-gap: 8px;
 
-    .wp-block-button__link:has([data-rich-text-placeholder]) {
-        display: block; // Force display block in the admin to avoid a bug when typing
-    }
+    // .wp-block-button__link:has([data-rich-text-placeholder]) {
+    //     display: block; // Force display block in the admin to avoid a bug when typing
+    // }
 
     &.with-icon {
         picture {
