@@ -43,7 +43,7 @@ export class BetterYoutube extends HTMLAnchorElement {
       return;
     }
 
-    this.addEventListener('click', this.#showIframe.bind(this));
+    this.addEventListener('click', this.#onClick.bind(this));
     this.#button = document.createElement('button');
     this.#button.classList.add('iframe-placeholder');
 
@@ -52,10 +52,23 @@ export class BetterYoutube extends HTMLAnchorElement {
     this.#options = { ...this.dataset };
   }
 
-  #showIframe(event) {
+  #onClick(event) {
     if (event.metaKey) {
       return;
     }
+
+    if (typeof window.onYoutubePlacheolderClick === 'function') {
+      return onYoutubePlacheolderClick(event).then(() => {
+        this.#showIframe(event);
+      }).catch((error) => {
+        console.error(error);
+      });
+    } else {
+      this.#showIframe(event);
+    }
+  }
+
+  #showIframe(event) {
     event.preventDefault();
     this.style.display = 'none';
     this.#iframe = document.createElement('iframe');
