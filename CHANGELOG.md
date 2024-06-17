@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.2](https://gitlab.consertotech.pro/lycanthrop/wordpress/core-blocks-enhancer/compare/v1.5.1...v1.5.2) (2024-06-17)
+
+
+### Bug Fixes
+
+* build js front ([79f0875](https://gitlab.consertotech.pro/lycanthrop/wordpress/core-blocks-enhancer/commit/79f08755167216ef7f742b6fb83e6cb70cbf4a1a))
+
 ### [1.5.1](https://gitlab.consertotech.pro/lycanthrop/wordpress/core-blocks-enhancer/compare/v1.5.0...v1.5.1) (2024-06-17)
 
 
