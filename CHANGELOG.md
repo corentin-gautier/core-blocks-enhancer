@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://gitlab.consertotech.pro/lycanthrop/wordpress/core-blocks-enhancer/compare/v1.4.9...v1.5.0) (2024-06-17)
+
+
+### Features
+
+* add youtube click catcher ([0d2b53e](https://gitlab.consertotech.pro/lycanthrop/wordpress/core-blocks-enhancer/commit/0d2b53ef91167b133135e847f32d81ff969d854b))
+
 ### [1.4.9](https://gitlab.consertotech.pro/lycanthrop/wordpress/core-blocks-enhancer/compare/v1.4.8...v1.4.9) (2024-06-13)
 
 
