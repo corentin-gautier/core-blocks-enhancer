@@ -57,8 +57,8 @@ export class BetterYoutube extends HTMLAnchorElement {
       return;
     }
 
-    if (typeof window.onYoutubePlacheolderClick === 'function') {
-      return onYoutubePlacheolderClick(event).then(() => {
+    if (typeof window.onYoutubePlaceholderClick === 'function') {
+      return onYoutubePlaceholderClick(event).then(() => {
         this.#showIframe(event);
       }).catch((error) => {
         console.error(error);
