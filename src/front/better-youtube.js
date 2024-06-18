@@ -20,7 +20,7 @@ export class BetterYoutube extends HTMLAnchorElement {
     this.#ID = this.#URL.host === 'youtu.be' ? this.#URL.pathname.substr(1) : this.#URL.search.split('?v=')[1];
 
     if (this.#ID) {
-      this.#isSufficientConnection = parseInt(navigator.connection.effectiveType, 10) > 3;
+      this.#isSufficientConnection = navigator.connection ? parseInt(navigator.connection.effectiveType, 10) > 3 : true;
       this.#showUI();
     }
 
