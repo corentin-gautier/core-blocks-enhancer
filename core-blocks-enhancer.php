@@ -9,8 +9,8 @@
  * Requires PHP:		7.4
  * Text Domain: 		core-blocks-enhancer
  * Domain Path: 		/languages
- * Author: 				Conserto
- * Author URI: 			https://conserto.pro
+ * Author: 				Corentin Gautier
+ * Author URI: 			
  */
 
 defined('ABSPATH') || exit();

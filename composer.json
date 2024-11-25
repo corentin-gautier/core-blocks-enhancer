@@ -1,5 +1,5 @@
 {
-    "name": "wordpress/core-blocks-enhancer",
+    "name": "cgsoft/core-blocks-enhancer",
     "description": "Core blocks enhancements",
     "type": "wordpress-plugin",
     "license": "GPLv3",
