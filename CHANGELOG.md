@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.6.1](https://github.com/corentin-gautier/core-blocks-enhancer/compare/v1.6.0...v1.6.1) (2024-11-25)
+
+
+### Bug Fixes
+
+* translation warning ([348fa2b](https://github.com/corentin-gautier/core-blocks-enhancer/commit/348fa2baf550c9d3b3854551b86269d2e2229bfb))
+
 ## [1.6.0](https://github.com/corentin-gautier/core-blocks-enhancer/compare/v1.4.5...v1.6.0) (2024-11-25)
 
 
