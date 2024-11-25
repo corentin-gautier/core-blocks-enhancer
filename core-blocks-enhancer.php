@@ -47,7 +47,7 @@ class CoreBlockEnhancerPlugin {
 			require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 		}
 		
-		$this->version = get_plugin_data( __FILE__ )['Version'];
+		$this->version = get_plugin_data( __FILE__, true, false)['Version'];
 		$this->path = __FILE__;
 		$this->src_dir = plugin_dir_path($this->path);
 		$this->src_dir_uri = plugin_dir_url($this->path);
