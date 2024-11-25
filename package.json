@@ -1,6 +1,6 @@
 {
     "name": "core-blocks-enhancer",
-    "version": "1.5.3",
+    "version": "1.6.0",
     "description": "",
     "main": "build/index.js",
     "author": "Corentin Gautier",

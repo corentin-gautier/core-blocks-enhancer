@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.6.0](https://github.com/corentin-gautier/core-blocks-enhancer/compare/v1.4.5...v1.6.0) (2024-11-25)
+
+
+### Features
+
+* add youtube click catcher ([0d2b53e](https://github.com/corentin-gautier/core-blocks-enhancer/commit/0d2b53ef91167b133135e847f32d81ff969d854b))
+
+
+### Bug Fixes
+
+* build js front ([79f0875](https://github.com/corentin-gautier/core-blocks-enhancer/commit/79f08755167216ef7f742b6fb83e6cb70cbf4a1a))
+* firefox error on navigator.connection ([4f6f9df](https://github.com/corentin-gautier/core-blocks-enhancer/commit/4f6f9df28a422f71adde1a67d09876445eda07c3))
+* handle youtube short urls ([060d7ed](https://github.com/corentin-gautier/core-blocks-enhancer/commit/060d7ed5ebb69aab2170b1fb006c5f3c969cf5fb))
+* hook name typo ([ace9d1a](https://github.com/corentin-gautier/core-blocks-enhancer/commit/ace9d1a35e32e4c80d84887590bd5dd9d47ad9be))
+* minify front script ([dae95ba](https://github.com/corentin-gautier/core-blocks-enhancer/commit/dae95ba14feeedf6bb4b6c87b91fd4ec7d0d8709))
+* old refs ([07c3aad](https://github.com/corentin-gautier/core-blocks-enhancer/commit/07c3aad955506440135301b2b2d907b08a3718c8))
+* remove button admin fix ([1db358a](https://github.com/corentin-gautier/core-blocks-enhancer/commit/1db358ad2c35e507c666fac065027875f3029a3e))
+* youtube iframe base url ([063a436](https://github.com/corentin-gautier/core-blocks-enhancer/commit/063a4365ed510ef57808da713b1fd30e9239c8a9))
+
 ### [1.5.3](cgsoft/core-blocks-enhander/compare/v1.5.2...v1.5.3) (2024-06-18)
 
 

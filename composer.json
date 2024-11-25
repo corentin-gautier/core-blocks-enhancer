@@ -3,6 +3,6 @@
     "description": "Core blocks enhancements",
     "type": "wordpress-plugin",
     "license": "GPLv3",
-    "version": "1.5.3",
+    "version": "1.6.0",
     "require": {}
 }
