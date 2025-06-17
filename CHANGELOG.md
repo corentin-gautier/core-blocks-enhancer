@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.7.0](https://github.com/corentin-gautier/core-blocks-enhancer/compare/v1.6.1...v1.7.0) (2025-06-17)
+
+
+### Features
+
+* add image lazy loading setting ([ce1702a](https://github.com/corentin-gautier/core-blocks-enhancer/commit/ce1702a2f832f5c7af77c9feff4c7dea1ab39633))
+
+
+### Bug Fixes
+
+* update package dependencies ([e84f8e7](https://github.com/corentin-gautier/core-blocks-enhancer/commit/e84f8e7afd77ccad07b58ee4bf4bfce8693bc701))
+
 ### [1.6.1](https://github.com/corentin-gautier/core-blocks-enhancer/compare/v1.6.0...v1.6.1) (2024-11-25)
 
 
