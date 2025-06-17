@@ -6,22 +6,23 @@
   "author": "Corentin Gautier",
   "license": "ISC",
   "devDependencies": {
-    "@wordpress/components": "*",
-    "@wordpress/element": "*",
+    "@rollup/plugin-terser": "*",
     "@wordpress/block-editor": "*",
     "@wordpress/blocks": "*",
+    "@wordpress/components": "*",
+    "@wordpress/element": "*",
+    "@wordpress/env": "*",
     "@wordpress/i18n": "*",
     "@wordpress/scripts": "*",
-    "rollup": "*",
-    "@rollup/plugin-terser": "*",
-    "@wordpress/env": "*",
-    "classnames": "*"
+    "bestzip": "^2.2.1",
+    "classnames": "*",
+    "rollup": "*"
   },
   "scripts": {
     "test": "wp-env start",
     "build": "npm run build-blocks && npm run build-front",
     "build-blocks": "npx wp-scripts build",
-    "build-front": "npx rollup --config rollup.config.mjs"
-  },
-  "dependencies": {}
+    "build-front": "npx rollup --config rollup.config.mjs",
+    "zip": "npm run build && npx bestzip core-blocks-enhancer.zip core-blocks-enhancer.php build lib views README.md LICENSE composer.json"
+  }
 }
