@@ -104,6 +104,16 @@ class CoreBlockEnhancerRenderer {
 		if (isset($block['attrs']['useForSeoRanking']) && (bool)$block['attrs']['useForSeoRanking']) {
 			$content = preg_replace('/<img (.*)\/>/', '<img aria-hidden="true" $1/>', $content);
 		}
+		// Add loading="lazy" if the option is enabled
+		if (isset($block['attrs']['lazyLoad']) && (bool)$block['attrs']['lazyLoad']) {
+			// Only add loading="lazy" if the image does not have a loading attribute
+			$content = preg_replace('/<img (.*) loading=".*?"\/>/', '<img $1/>', $content);
+			$content = preg_replace('/<img (.*)\/>/', '<img loading="lazy" $1/>', $content);
+
+			// Remove the fetchpriority attribute
+			$content = preg_replace('/ fetchpriority=".*?"/', '', $content);
+		}
+
 		return $content;
 	}
 

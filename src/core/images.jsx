@@ -1,21 +1,21 @@
 /* Add custom attribute to image block, in Sidebar */
-import { __ } from '@wordpress/i18n';
+import { InspectorControls } from '@wordpress/block-editor';
 import { PanelBody, ToggleControl } from '@wordpress/components';
 import { Fragment } from '@wordpress/element';
-import { InspectorControls } from '@wordpress/block-editor';
+import { __ } from '@wordpress/i18n';
 import { BlockModifier } from '../block-modifier';
 
 class ImageModifier extends BlockModifier {
   getEditForm(BlockEdit, props) {
     const { attributes, setAttributes } = props;
-    const { useForSeoRanking } = attributes;
+    const { useForSeoRanking, lazyLoad } = attributes;
 
     return (
       <Fragment>
         <BlockEdit {...props} />
         <InspectorControls>
           <PanelBody
-            title={__('SEO Options', 'core-blocks-enhancer')}
+            title={__('SEO & Performance', 'core-blocks-enhancer')}
           >
             <ToggleControl
               label={__('Use for ranking', 'core-blocks-enhancer')}
@@ -24,6 +24,16 @@ class ImageModifier extends BlockModifier {
               onChange={(value) => {
                 setAttributes({
                   useForSeoRanking: value,
+                });
+              }}
+            />
+            <ToggleControl
+              label={__('Lazy load', 'core-blocks-enhancer')}
+              help={__('Adds loading="lazy" to an image allowing the image to be loaded when it is in the viewport', 'core-blocks-enhancer')}
+              checked={lazyLoad}
+              onChange={(value) => {
+                setAttributes({
+                  lazyLoad: value,
                 });
               }}
             />
@@ -41,7 +51,8 @@ const allowedBlocks = [
 ];
 
 const customSettings = {
-  useForSeoRanking: { type: 'boolean' }
+  useForSeoRanking: { type: 'boolean' },
+  lazyLoad: { type: 'boolean' }
 };
 
 new ImageModifier('core-blocks-enhancer/images', allowedBlocks, customSettings);
