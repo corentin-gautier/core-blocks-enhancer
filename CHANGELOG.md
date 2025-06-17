@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.8.0](https://github.com/corentin-gautier/core-blocks-enhancer/compare/v1.7.0...v1.8.0) (2025-06-17)
+
+
+### Features
+
+* add zip script ([6f1e10f](https://github.com/corentin-gautier/core-blocks-enhancer/commit/6f1e10ff94e90d0af66554943b9167442b23261c))
+
 ## [1.7.0](https://github.com/corentin-gautier/core-blocks-enhancer/compare/v1.6.1...v1.7.0) (2025-06-17)
 
 
