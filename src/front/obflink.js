@@ -1,46 +1,39 @@
-export class ObfLink extends HTMLAnchorElement {
-  
-  #target;
-  #url;
+/**
+ * Obfuscated links: <a encoded-url="base64"> elements without href.
+ *
+ * Uses a delegated listener instead of a customized built-in element (<a is="obf-link">),
+ * which Safari doesn't support. It also handles links added to the page later on.
+ */
+export class ObfLink {
 
-  constructor(element) {
-    super();
-    let ref = this;
+  static #selector = '[encoded-url]';
 
-    if (element) {
-      ref = element;
-    }
+  static #openUrl(link, event) {
+    const url = window.atob(link.getAttribute('encoded-url'));
+    const target = event.ctrlKey || event.metaKey ? '_blank' : (link.target || '_self');
 
-    this.#url = window.atob(ref.getAttribute('encoded-url'));
-    this.#target = ref.target || '_self';
-
-    ref.addEventListener('click', (e) => {
-      e.preventDefault();
-      this.#openUrl(e);
-    });
-
-    ref.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-        this.#openUrl(e);
-      }
-    })
-  }
-
-  #openUrl(e) {
-    const target = e.ctrlKey || e.metaKey ? '_blank' : this.#target;
-    window.open(decodeURIComponent(this.#url), target);
+    window.open(decodeURIComponent(url), target);
   }
 
   static registerElement() {
-    if (window.customElements) {
-      customElements.define('obf-link', ObfLink, { extends: 'a' });
-    }
-  
-    const links = document.querySelectorAll('[encoded-url]:not([is="obf-link"])');
-    
-    links.forEach(l => {
-      new ObfLink(l);
+    document.addEventListener('click', (event) => {
+      const link = event.target.closest(ObfLink.#selector);
+
+      if (link) {
+        event.preventDefault();
+        ObfLink.#openUrl(link, event);
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key !== 'Enter') return;
+
+      const link = event.target.closest(ObfLink.#selector);
+
+      if (link) {
+        event.preventDefault();
+        ObfLink.#openUrl(link, event);
+      }
     });
   }
 }

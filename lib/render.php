@@ -42,7 +42,7 @@ class CoreBlockEnhancerRenderer {
 	public static function obfuscate_link($string)
 	{
 		return preg_replace_callback('/href="(.*?)"/', function ($m) {
-			return 'is="obf-link" tabindex="0" encoded-url="' . base64_encode($m[1]) . '"';
+			return 'is="obf-link" role="link" tabindex="0" encoded-url="' . base64_encode($m[1]) . '"';
 		}, $string);
 	}
 
