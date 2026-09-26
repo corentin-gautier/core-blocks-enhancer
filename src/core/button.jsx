@@ -22,7 +22,7 @@ class ButtonModifier extends BlockModifier {
 
     if (icon && icon.id) {
       wrapperProps.style = {
-        '--icon': 'url(' + icon.sizes?.full?.url + ')',
+        '--icon': 'url(' + (icon.sizes?.full?.url ?? icon.url) + ')',
         '--icon-size': (iconSize || 24) + 'px',
         '--icon-border': '1em solid' + (iconColor ? ' ' + iconColor : ''),
         '--icon-gradient': iconGradient
@@ -88,7 +88,7 @@ class ButtonModifier extends BlockModifier {
                       iconSize: 24
                     });
 
-                    if (media.subtype !== 'xml+svg') {
+                    if (media.subtype !== 'svg+xml') {
                       setAttributes({
                         iconGradient: null,
                         iconColor: null

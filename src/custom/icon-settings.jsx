@@ -40,7 +40,7 @@ export default function IconSettings(props) {
             label={__('Icon', 'core-blocks-enhancer')}
             isShownByDefault
             style={{ gridColumn: 'span 2', display: 'flex', alignItems: 'center', gap: '18px' }}>
-            <img onClick={onClickMedia} src={icon.sizes.full.url} width={icon.width} style={{ maxWidth: '50px', width: '100%', cursor: 'pointer', padding: '4px', border: '1px solid rgba(0,0,0,.1)', borderRadius: '2px' }} />
+            <img onClick={onClickMedia} src={icon.sizes?.full?.url ?? icon.url} width={icon.width} style={{ maxWidth: '50px', width: '100%', cursor: 'pointer', padding: '4px', border: '1px solid rgba(0,0,0,.1)', borderRadius: '2px' }} />
             <ToggleGroupControl
               label={__('Placement', 'core-blocks-enhancer')}
               value={iconPlacement || 'left'}
