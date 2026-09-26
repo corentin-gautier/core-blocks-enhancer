@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.9.0](https://github.com/corentin-gautier/core-blocks-enhancer/compare/v1.8.0...v1.9.0) (2026-09-26)
+
+
+### Features
+
+* use core's Language format for lang/dir ([ce9603a](https://github.com/corentin-gautier/core-blocks-enhancer/commit/ce9603abc499e77d72cbf2f208cd46026aa6740b))
+
+
+### Bug Fixes
+
+* **button:** keep SVG icon colors on selection and guard missing image sizes ([0687617](https://github.com/corentin-gautier/core-blocks-enhancer/commit/06876171027c850b95059fbeafc0f9322eac72be))
+* disallow the actual front script in robots.txt ([822e9a3](https://github.com/corentin-gautier/core-blocks-enhancer/commit/822e9a368dbffb576aa0344eb42cdc88d7de7265))
+* **front:** support Safari and parse more YouTube URLs ([0347b82](https://github.com/corentin-gautier/core-blocks-enhancer/commit/0347b82d107d2b0eabc35c997559d30d5f0cbb58))
+* load styles in the iframed editor and use generated script dependencies ([2a4c3d5](https://github.com/corentin-gautier/core-blocks-enhancer/commit/2a4c3d56399c1a307c68a3d5070b9a99518f45c1))
+* PHP 8.2+ deprecation and missing embed attribute warning ([0b3f03b](https://github.com/corentin-gautier/core-blocks-enhancer/commit/0b3f03bd4094b9f205c6e22fc42beb7e9d4c1d8b))
+
 ## [1.8.0](https://github.com/corentin-gautier/core-blocks-enhancer/compare/v1.7.0...v1.8.0) (2025-06-17)
 
 
