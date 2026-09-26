@@ -9,8 +9,8 @@
 		$h2 = $h * 2;
 		$ext = $infos['extension'];
 
-		$file_end = "-${w}x${h}.${ext}";
-		$file_end_2x = "-${w2}x${h2}.${ext}";
+		$file_end = "-{$w}x{$h}.{$ext}";
+		$file_end_2x = "-{$w2}x{$h2}.{$ext}";
 
 		$resized_path = $infos['dirname'] . '/' . $infos['filename'] . $file_end;
 		$resized_path_2x = $infos['dirname'] . '/' . $infos['filename'] . $file_end_2x;

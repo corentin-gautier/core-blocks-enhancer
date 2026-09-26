@@ -215,7 +215,7 @@ class CoreBlockEnhancerRenderer {
 	 * @return void
 	 */
 	public static function render_core_embed($content, $block) {
-		if ($block['attrs']['providerNameSlug'] == 'youtube') {
+		if (($block['attrs']['providerNameSlug'] ?? '') === 'youtube' && !empty($block['attrs']['url'])) {
 
 			$link = $block['attrs']['url'];
 			$title = __('View video', 'core-blocks-enhancer');
