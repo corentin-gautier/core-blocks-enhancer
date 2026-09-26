@@ -4,7 +4,7 @@ import {
 } from '@wordpress/block-editor';
 import {
   FontSizePicker,
-  Button, ButtonGroup,
+  Button,
   ToggleControl,
   __experimentalToolsPanelItem as ToolsPanelItem,
   __experimentalToggleGroupControl as ToggleGroupControl,
@@ -113,7 +113,7 @@ export default function IconSettings(props) {
             label={__('Icon Size', 'core-blocks-enhancer')}
             isShownByDefault>
             <FontSizePicker
-              __nextHasNoMarginBottom="true"
+              __nextHasNoMarginBottom
               fallbackFontSize={24}
               value={(iconSize || 24)}
               fontSizes={[
@@ -143,9 +143,9 @@ export default function IconSettings(props) {
         </Fragment>
       )}
       {!icon && (
-        <ButtonGroup style={{ gridColumn: 'span 2' }}>
+        <div style={{ gridColumn: 'span 2' }}>
           <Button variant="secondary" onClick={onClickMedia}>{buttonText}</Button>
-        </ButtonGroup>
+        </div>
       )}
     </Fragment>
   )

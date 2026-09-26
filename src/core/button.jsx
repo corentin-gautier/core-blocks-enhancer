@@ -111,8 +111,8 @@ class ButtonModifier extends BlockModifier {
 }
 
 new ButtonModifier('core-blocks-enhancer/button', ['core/button'], {
-  alt: { type: 'text' },
-  iconPlacement: { type: 'text', default: 'left' },
+  alt: { type: 'string' },
+  iconPlacement: { type: 'string', default: 'left' },
   icon: { type: 'object' },
   iconSize: { type: 'number' },
   iconColor: { type: 'string' },

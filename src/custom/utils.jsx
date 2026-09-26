@@ -2,13 +2,15 @@
 * WordPress dependencies
 */
 import { useMemo } from '@wordpress/element';
-import { useSetting } from '@wordpress/block-editor';
+import { useSettings } from '@wordpress/block-editor';
 import { _x } from '@wordpress/i18n';
 
 export function useCommonSingleMultipleSelects() {
+  const [customColors, customGradients] = useSettings('color.custom', 'color.customGradient');
+
   return {
-    disableCustomColors: !useSetting('color.custom'),
-    disableCustomGradients: !useSetting('color.customGradient'),
+    disableCustomColors: !customColors,
+    disableCustomGradients: !customGradients,
   };
 }
 
@@ -22,10 +24,25 @@ export function useCommonSingleMultipleSelects() {
 */
 export function useMultipleOriginColorsAndGradients() {
   const colorGradientSettings = useCommonSingleMultipleSelects();
-  const customColors = useSetting('color.palette.custom');
-  const themeColors = useSetting('color.palette.theme');
-  const defaultColors = useSetting('color.palette.default');
-  const shouldDisplayDefaultColors = useSetting('color.defaultPalette');
+  const [
+    customColors,
+    themeColors,
+    defaultColors,
+    shouldDisplayDefaultColors,
+    customGradients,
+    themeGradients,
+    defaultGradients,
+    shouldDisplayDefaultGradients,
+  ] = useSettings(
+    'color.palette.custom',
+    'color.palette.theme',
+    'color.palette.default',
+    'color.defaultPalette',
+    'color.gradients.custom',
+    'color.gradients.theme',
+    'color.gradients.default',
+    'color.defaultGradients'
+  );
 
   colorGradientSettings.colors = useMemo(() => {
     const result = [];
@@ -63,12 +80,6 @@ export function useMultipleOriginColorsAndGradients() {
     return result;
   }, [defaultColors, themeColors, customColors]);
 
-  const customGradients = useSetting('color.gradients.custom');
-  const themeGradients = useSetting('color.gradients.theme');
-  const defaultGradients = useSetting('color.gradients.default');
-  const shouldDisplayDefaultGradients = useSetting(
-    'color.defaultGradients'
-  );
   colorGradientSettings.gradients = useMemo(() => {
     const result = [];
     if (themeGradients && themeGradients.length) {
