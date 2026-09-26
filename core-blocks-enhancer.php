@@ -55,30 +55,35 @@ class CoreBlockEnhancerPlugin {
 		require_once 'lib/render.php';
 
 		add_action('wp_enqueue_scripts', array($this, 'add_front_scripts'));
+		add_action('enqueue_block_assets', array($this, 'add_styles'));
 		add_action('enqueue_block_editor_assets', array($this, 'add_scripts'));
 
 		add_filter('render_block', array($this, 'customize_core_blocks'), 10, 2);
 		add_filter('robots_txt', array($this, 'disallow_js'), 999999, 2);
 	}
 	
-	public function add_scripts()
+	/**
+	 * Front and editor styles: enqueue_block_assets also loads them inside the iframed editor
+	 */
+	public function add_styles()
 	{
 		if (is_file("{$this->src_dir}/build/index.css")) {
 			wp_enqueue_style('core-blocks-enhancer', "{$this->src_dir_uri}build/index.css", null, $this->version);
-		}
-		
-		if (is_file("{$this->src_dir}/build/index.js")) {
-			$deps = [ 'wp-blocks', 'wp-dom', 'wp-dom-ready' ];
-			wp_enqueue_script('core-blocks-enhancer', "{$this->src_dir_uri}build/index.js", $deps, $this->version, true);
 		}
 	}
-	
+
+	public function add_scripts()
+	{
+		$asset_file = "{$this->src_dir}/build/index.asset.php";
+
+		if (is_file("{$this->src_dir}/build/index.js") && is_file($asset_file)) {
+			$asset = require $asset_file;
+			wp_enqueue_script('core-blocks-enhancer', "{$this->src_dir_uri}build/index.js", $asset['dependencies'], $asset['version'], true);
+		}
+	}
+
 	public function add_front_scripts()
 	{
-		if (is_file("{$this->src_dir}/build/index.css")) {
-			wp_enqueue_style('core-blocks-enhancer', "{$this->src_dir_uri}build/index.css", null, $this->version);
-		}
-
 		if (is_file("{$this->src_dir}/build/front.min.js")) {
 			wp_enqueue_script('core-blocks-enhancer-front', "{$this->src_dir_uri}build/front.min.js", null, $this->version, true);
 		}
