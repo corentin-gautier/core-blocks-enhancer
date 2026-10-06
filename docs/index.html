@@ -3,11 +3,47 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Core Blocks Enhancer</title>
-<meta name="description" content="Accessibility, SEO and performance options for the WordPress core blocks, without replacing them.">
-<meta property="og:title" content="Core Blocks Enhancer">
-<meta property="og:description" content="Accessibility, SEO and performance options for the WordPress core blocks, without replacing them.">
+<title>Core Blocks Enhancer: WordPress plugin for Gutenberg core blocks</title>
+<meta name="description" content="Free WordPress plugin that adds accessibility, SEO and performance options to the Gutenberg core blocks: button icons, link obfuscation, aria heading levels, lazy YouTube embeds.">
+<meta name="author" content="Corentin Gautier">
+<link rel="canonical" href="https://corentin-gautier.github.io/core-blocks-enhancer/">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Core Blocks Enhancer">
+<meta property="og:title" content="Core Blocks Enhancer: WordPress plugin for Gutenberg core blocks">
+<meta property="og:description" content="Free WordPress plugin that adds accessibility, SEO and performance options to the Gutenberg core blocks: button icons, link obfuscation, aria heading levels, lazy YouTube embeds.">
+<meta property="og:url" content="https://corentin-gautier.github.io/core-blocks-enhancer/">
+<meta property="og:image" content="https://corentin-gautier.github.io/core-blocks-enhancer/assets/social-preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Core Blocks Enhancer: WordPress core blocks, with the options they are missing">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#3858e9">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Core Blocks Enhancer",
+  "description": "Free WordPress plugin that adds accessibility, SEO and performance options to the Gutenberg core blocks: button icons, link obfuscation, aria heading levels, lazy YouTube embeds.",
+  "url": "https://corentin-gautier.github.io/core-blocks-enhancer/",
+  "image": "https://corentin-gautier.github.io/core-blocks-enhancer/assets/social-preview.png",
+  "applicationCategory": "WordPress plugin",
+  "operatingSystem": "WordPress",
+  "softwareRequirements": "PHP 7.4 or later",
+  "license": "https://www.gnu.org/licenses/gpl-3.0.html",
+  "codeRepository": "https://github.com/corentin-gautier/core-blocks-enhancer",
+  "downloadUrl": "https://github.com/corentin-gautier/core-blocks-enhancer/releases/latest",
+  "author": { "@type": "Person", "name": "Corentin Gautier", "url": "https://github.com/corentin-gautier" },
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": [
+    "Icons and aria-label on the Button block",
+    "Link obfuscation on Button and Paragraph blocks",
+    "aria-hidden and lazy loading options on the Image block",
+    "Aria heading level override on the Heading block",
+    "Scoped header cells on the Table block",
+    "Click-to-load YouTube embeds"
+  ]
+}
+</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%233858e9'/%3E%3Cpath d='M9 9h6v6H9zM17 17h6v6h-6z' fill='%23fff'/%3E%3Cpath d='M17 9h6v6h-6zM9 17h6v6H9z' fill='%23fff' opacity='.45'/%3E%3C/svg%3E">
 <style>
   :root {
@@ -74,7 +110,7 @@
   .index span { font-size: 14px; color: var(--muted); }
 
   section { padding: 56px 0 0; }
-  h2 { margin: 0 0 8px; font-size: 28px; letter-spacing: -0.01em; }
+  h2 { margin: 0 0 8px; font-size: 28px; line-height: 1.2; letter-spacing: -0.01em; text-wrap: balance; }
   h2 + p { margin-top: 0; color: var(--muted); }
 
   .feature { display: grid; grid-template-columns: minmax(0, 1fr) 282px; gap: 32px; align-items: start; padding: 32px 0; border-top: 1px solid var(--border); scroll-margin-top: 16px; }
@@ -134,8 +170,8 @@
   <div class="wrap">
 
     <div class="hero">
-      <h1>The core blocks, with the options they are missing</h1>
-      <p>A WordPress plugin that adds accessibility, SEO and performance options to the Gutenberg blocks you already use. No new blocks to learn, nothing changes until you turn an option on.</p>
+      <h1>WordPress core blocks, with the options they are missing</h1>
+      <p>Core Blocks Enhancer is a free WordPress plugin that adds accessibility, SEO and performance options to the Gutenberg blocks you already use. No new blocks to learn, nothing changes until you turn an option on.</p>
       <div class="actions">
         <a class="btn primary" href="#install">Install the plugin</a>
         <a class="btn" href="https://github.com/corentin-gautier/core-blocks-enhancer">View on GitHub</a>
@@ -152,13 +188,13 @@
     </ul>
 
     <section id="features">
-      <h2>Features</h2>
+      <h2>What the plugin adds to each block</h2>
       <p>Each option lives in the sidebar of the block it applies to.</p>
 
       <article class="feature" id="images">
         <div>
           <div class="tags"><span class="tag">SEO</span><span class="tag">Performance</span></div>
-          <h3>Images</h3>
+          <h3>Image SEO and lazy loading</h3>
           <p class="where">Image and Media &amp; Text blocks, "SEO &amp; Performance" panel</p>
           <p><strong>Use for ranking</strong> adds <code>aria-hidden="true"</code> to an illustrative image, so its alt text can be written for search engines without being read by assistive technologies.</p>
           <p><strong>Lazy load</strong>, on the Image block, forces <code>loading="lazy"</code> and removes any <code>fetchpriority</code> attribute.</p>
@@ -169,7 +205,7 @@
       <article class="feature" id="obfuscate">
         <div>
           <div class="tags"><span class="tag">SEO</span></div>
-          <h3>Obfuscate links</h3>
+          <h3>Link obfuscation</h3>
           <p class="where">Button and Paragraph blocks, "SEO Options" panel</p>
           <p>Removes the links from the markup served to robots. Each <code>href</code> is replaced with a base64 encoded attribute, and a small front script opens the URL on click or on <kbd>Enter</kbd>.</p>
           <pre><code>&lt;a is="obf-link" role="link" tabindex="0"
@@ -186,7 +222,7 @@
       <article class="feature" id="button-icon">
         <div>
           <div class="tags"><span class="tag">Design</span><span class="tag">Accessibility</span></div>
-          <h3>Button icon and label</h3>
+          <h3>Button icons and aria-label</h3>
           <p class="where">Button block, "Button icon" and "Accessibility" panels</p>
           <p>Pick any image from the media library and place it left or right of the button text.</p>
           <ul>
@@ -203,7 +239,7 @@
       <article class="feature" id="heading">
         <div>
           <div class="tags"><span class="tag">Accessibility</span></div>
-          <h3>Heading level</h3>
+          <h3>Aria heading level</h3>
           <p class="where">Heading block, "Accessibility Options" panel</p>
           <p>Overrides the level announced to assistive technologies with <code>role="heading"</code> and <code>aria-level</code>, so a heading can look like an <code>h2</code> and be announced as an <code>h4</code>.</p>
           <p>"None" sets <code>role="presentation"</code> to take the heading out of the document outline.</p>
@@ -214,7 +250,7 @@
       <article class="feature text-only" id="table">
         <div>
           <div class="tags"><span class="tag">Accessibility</span><span class="tag auto">Automatic</span></div>
-          <h3>Tables</h3>
+          <h3>Accessible table headers</h3>
           <p>Every <code>&lt;th&gt;</code> of the Table block gets <code>scope="col"</code>.</p>
         </div>
       </article>
@@ -222,7 +258,7 @@
       <article class="feature text-only" id="youtube">
         <div>
           <div class="tags"><span class="tag">Performance</span><span class="tag auto">Automatic</span></div>
-          <h3>YouTube embeds</h3>
+          <h3>Lazy YouTube embeds</h3>
           <p>The YouTube iframe is replaced with a link showing the video thumbnail. The player is only loaded when the visitor clicks it, so nothing from the YouTube player is downloaded on page load.</p>
           <ul>
             <li>Supports <code>youtu.be/ID</code>, <code>youtube.com/watch?v=ID</code>, <code>/embed/ID</code>, <code>/shorts/ID</code> and <code>/live/ID</code> URLs.</li>
@@ -246,7 +282,7 @@
     </section>
 
     <section id="install">
-      <h2>Install</h2>
+      <h2>Install the WordPress plugin</h2>
       <p>Requires PHP 7.4 or later. The built files are in the repository, so there is no build step.</p>
 
       <ol class="steps">
