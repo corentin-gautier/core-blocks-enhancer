@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Core Blocks Enhancer</title>
+<meta name="description" content="Accessibility, SEO and performance options for the WordPress core blocks, without replacing them.">
+<meta property="og:title" content="Core Blocks Enhancer">
+<meta property="og:description" content="Accessibility, SEO and performance options for the WordPress core blocks, without replacing them.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%233858e9'/%3E%3Cpath d='M9 9h6v6H9zM17 17h6v6h-6z' fill='%23fff'/%3E%3Cpath d='M17 9h6v6h-6zM9 17h6v6H9z' fill='%23fff' opacity='.45'/%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg: #fbfbfa;
+    --surface: #ffffff;
+    --text: #1e1e1e;
+    --muted: #5f6368;
+    --border: #e2e2df;
+    --accent: #3858e9;
+    --accent-text: #ffffff;
+    --code-bg: #f1f1ee;
+    --tag-bg: #eceffd;
+    --tag-text: #2a45c4;
+    --shot-bg: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #141516;
+      --surface: #1c1e20;
+      --text: #ececec;
+      --muted: #a3a7ad;
+      --border: #2e3135;
+      --accent: #8fa3ff;
+      --accent-text: #10131f;
+      --code-bg: #24272a;
+      --tag-bg: #232a4a;
+      --tag-text: #b3c0ff;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  }
+  a { color: var(--accent); text-underline-offset: 3px; }
+  a:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 0 16px; }
+
+  header.top { border-bottom: 1px solid var(--border); }
+  header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 600; color: inherit; text-decoration: none; }
+  .brand svg { flex-shrink: 0; }
+  nav { display: flex; gap: 18px; font-size: 14px; }
+  nav a { color: var(--muted); text-decoration: none; }
+  nav a:hover { color: var(--text); }
+
+  .hero { padding: 72px 0 56px; }
+  .hero h1 { margin: 0 0 16px; font-size: clamp(34px, 6vw, 52px); line-height: 1.1; letter-spacing: -0.02em; text-wrap: balance; }
+  .hero p { margin: 0 0 28px; max-width: 60ch; font-size: 19px; color: var(--muted); text-wrap: pretty; }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn { display: inline-block; padding: 10px 18px; border: 1px solid var(--border); border-radius: 6px; background: var(--surface); color: var(--text); font-weight: 500; text-decoration: none; }
+  .btn:hover { border-color: var(--muted); }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-text); }
+  .btn.primary:hover { filter: brightness(1.08); }
+
+  .index { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1px; margin: 0; padding: 0; list-style: none; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+  .index a { display: block; height: 100%; padding: 16px 18px; background: var(--surface); color: inherit; text-decoration: none; }
+  .index a:hover { background: var(--code-bg); }
+  .index strong { display: block; }
+  .index span { font-size: 14px; color: var(--muted); }
+
+  section { padding: 56px 0 0; }
+  h2 { margin: 0 0 8px; font-size: 28px; letter-spacing: -0.01em; }
+  h2 + p { margin-top: 0; color: var(--muted); }
+
+  .feature { display: grid; grid-template-columns: minmax(0, 1fr) 282px; gap: 32px; align-items: start; padding: 32px 0; border-top: 1px solid var(--border); scroll-margin-top: 16px; }
+  .feature.text-only { grid-template-columns: minmax(0, 1fr); }
+  .feature:first-of-type { margin-top: 24px; }
+  .feature h3 { margin: 8px 0; font-size: 21px; }
+  .feature p, .feature ul { margin: 0 0 12px; max-width: 62ch; }
+  .feature ul { padding-left: 20px; }
+  .feature li { margin-bottom: 6px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; font-size: 12.5px; }
+  .tag { padding: 2px 8px; border-radius: 99px; background: var(--tag-bg); color: var(--tag-text); font-weight: 500; }
+  .tag.auto { background: var(--code-bg); color: var(--muted); }
+  .where { font-size: 14px; color: var(--muted); }
+  figure { margin: 0; }
+  figure img { display: block; width: 100%; height: auto; border: 1px solid var(--border); border-radius: 6px; background: var(--shot-bg); }
+
+  code, kbd { font: 0.875em/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+  :not(pre) > code, kbd { padding: 2px 5px; border-radius: 4px; background: var(--code-bg); overflow-wrap: anywhere; }
+  pre { margin: 0 0 12px; padding: 14px 16px; border: 1px solid var(--border); border-radius: 6px; background: var(--code-bg); overflow-x: auto; }
+  pre code { font-size: 13.5px; }
+
+  .steps { margin: 24px 0 0; padding: 0; list-style: none; counter-reset: step; }
+  .steps > li { position: relative; padding: 0 0 20px 44px; counter-increment: step; }
+  .steps > li::before { content: counter(step); position: absolute; left: 0; top: 0; width: 28px; height: 28px; border: 1px solid var(--border); border-radius: 50%; background: var(--surface); font-size: 14px; font-weight: 600; line-height: 26px; text-align: center; }
+  .steps p { margin: 0 0 10px; }
+  .note { margin: 0; padding: 14px 16px; border-left: 3px solid var(--accent); background: var(--surface); border-radius: 0 6px 6px 0; }
+
+  footer { margin-top: 72px; padding: 24px 0 40px; border-top: 1px solid var(--border); font-size: 14px; color: var(--muted); }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+
+  @media (max-width: 720px) {
+    nav a.hide-sm { display: none; }
+    .hero { padding: 48px 0 40px; }
+    .feature { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+    figure { max-width: 282px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <svg width="24" height="24" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#3858e9"/><path d="M9 9h6v6H9zM17 17h6v6h-6z" fill="#fff"/><path d="M17 9h6v6h-6zM9 17h6v6H9z" fill="#fff" opacity=".45"/></svg>
+      Core Blocks Enhancer
+    </a>
+    <nav aria-label="Main">
+      <a class="hide-sm" href="#features">Features</a>
+      <a class="hide-sm" href="#install">Install</a>
+      <a href="https://github.com/corentin-gautier/core-blocks-enhancer/blob/main/CHANGELOG.md">Changelog</a>
+      <a href="https://github.com/corentin-gautier/core-blocks-enhancer">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap">
+
+    <div class="hero">
+      <h1>The core blocks, with the options they are missing</h1>
+      <p>A WordPress plugin that adds accessibility, SEO and performance options to the Gutenberg blocks you already use. No new blocks to learn, nothing changes until you turn an option on.</p>
+      <div class="actions">
+        <a class="btn primary" href="#install">Install the plugin</a>
+        <a class="btn" href="https://github.com/corentin-gautier/core-blocks-enhancer">View on GitHub</a>
+      </div>
+    </div>
+
+    <ul class="index">
+      <li><a href="#images"><strong>Image, Media &amp; Text</strong><span>Alt text for ranking, lazy loading</span></a></li>
+      <li><a href="#obfuscate"><strong>Button, Paragraph</strong><span>Link obfuscation</span></a></li>
+      <li><a href="#button-icon"><strong>Button</strong><span>Icon and aria-label</span></a></li>
+      <li><a href="#heading"><strong>Heading</strong><span>Aria heading level override</span></a></li>
+      <li><a href="#table"><strong>Table</strong><span>Scoped header cells, automatic</span></a></li>
+      <li><a href="#youtube"><strong>YouTube embed</strong><span>Click-to-load player, automatic</span></a></li>
+    </ul>
+
+    <section id="features">
+      <h2>Features</h2>
+      <p>Each option lives in the sidebar of the block it applies to.</p>
+
+      <article class="feature" id="images">
+        <div>
+          <div class="tags"><span class="tag">SEO</span><span class="tag">Performance</span></div>
+          <h3>Images</h3>
+          <p class="where">Image and Media &amp; Text blocks, "SEO &amp; Performance" panel</p>
+          <p><strong>Use for ranking</strong> adds <code>aria-hidden="true"</code> to an illustrative image, so its alt text can be written for search engines without being read by assistive technologies.</p>
+          <p><strong>Lazy load</strong>, on the Image block, forces <code>loading="lazy"</code> and removes any <code>fetchpriority</code> attribute.</p>
+        </div>
+        <figure><img src="assets/image-ranking.png" width="277" height="158" loading="lazy" alt="The Use for ranking toggle in the image block sidebar"></figure>
+      </article>
+
+      <article class="feature" id="obfuscate">
+        <div>
+          <div class="tags"><span class="tag">SEO</span></div>
+          <h3>Obfuscate links</h3>
+          <p class="where">Button and Paragraph blocks, "SEO Options" panel</p>
+          <p>Removes the links from the markup served to robots. Each <code>href</code> is replaced with a base64 encoded attribute, and a small front script opens the URL on click or on <kbd>Enter</kbd>.</p>
+          <pre><code>&lt;a is="obf-link" role="link" tabindex="0"
+   encoded-url="aHR0cHM6Ly9leGFtcGxlLmNvbQ=="&gt;Link&lt;/a&gt;</code></pre>
+          <ul>
+            <li>Links stay focusable, and Ctrl/Cmd + click opens them in a new tab.</li>
+            <li>On a paragraph, the option applies to every link it contains.</li>
+            <li>The front script is disallowed in <code>robots.txt</code>.</li>
+          </ul>
+        </div>
+        <figure><img src="assets/obfuscate.png" width="279" height="121" loading="lazy" alt="The Obfuscate toggle in the block sidebar"></figure>
+      </article>
+
+      <article class="feature" id="button-icon">
+        <div>
+          <div class="tags"><span class="tag">Design</span><span class="tag">Accessibility</span></div>
+          <h3>Button icon and label</h3>
+          <p class="where">Button block, "Button icon" and "Accessibility" panels</p>
+          <p>Pick any image from the media library and place it left or right of the button text.</p>
+          <ul>
+            <li><strong>SVG icons</strong> are used as a mask, so they can take a color or a gradient from the theme palette. "Don't replace colors" keeps the colors of the file.</li>
+            <li><strong>Other images</strong> are cropped to the icon size, with a 2x version for high density screens.</li>
+            <li><strong>Size</strong> is 16, 24 or 32px, or any custom value.</li>
+            <li>The gap between icon and text is the <code>--button-gap</code> custom property, 8px by default.</li>
+          </ul>
+          <p><strong>Button label</strong> adds an <code>aria-label</code> to the button link.</p>
+        </div>
+        <figure><img src="assets/button-icon.png" width="282" height="344" loading="lazy" alt="The Button icon panel with placement, color and size settings"></figure>
+      </article>
+
+      <article class="feature" id="heading">
+        <div>
+          <div class="tags"><span class="tag">Accessibility</span></div>
+          <h3>Heading level</h3>
+          <p class="where">Heading block, "Accessibility Options" panel</p>
+          <p>Overrides the level announced to assistive technologies with <code>role="heading"</code> and <code>aria-level</code>, so a heading can look like an <code>h2</code> and be announced as an <code>h4</code>.</p>
+          <p>"None" sets <code>role="presentation"</code> to take the heading out of the document outline.</p>
+        </div>
+        <figure><img src="assets/heading-level.png" width="281" height="130" loading="lazy" alt="The heading level select in the heading block sidebar"></figure>
+      </article>
+
+      <article class="feature text-only" id="table">
+        <div>
+          <div class="tags"><span class="tag">Accessibility</span><span class="tag auto">Automatic</span></div>
+          <h3>Tables</h3>
+          <p>Every <code>&lt;th&gt;</code> of the Table block gets <code>scope="col"</code>.</p>
+        </div>
+      </article>
+
+      <article class="feature text-only" id="youtube">
+        <div>
+          <div class="tags"><span class="tag">Performance</span><span class="tag auto">Automatic</span></div>
+          <h3>YouTube embeds</h3>
+          <p>The YouTube iframe is replaced with a link showing the video thumbnail. The player is only loaded when the visitor clicks it, so nothing from the YouTube player is downloaded on page load.</p>
+          <ul>
+            <li>Supports <code>youtu.be/ID</code>, <code>youtube.com/watch?v=ID</code>, <code>/embed/ID</code>, <code>/shorts/ID</code> and <code>/live/ID</code> URLs.</li>
+            <li>On connections slower than 4G, when the browser reports it, a low resolution thumbnail is used and the link opens YouTube in a new tab.</li>
+            <li>Ctrl/Cmd + click always opens the video on YouTube.</li>
+          </ul>
+          <p>To run something before the player loads, such as asking for consent, define <code>window.onYoutubePlaceholderClick</code>. It receives the click event and must return a promise. The player loads when it resolves, and nothing happens if it rejects.</p>
+          <pre><code>window.onYoutubePlaceholderClick = (event) =&gt; new Promise((resolve, reject) =&gt; {
+  hasConsent('youtube') ? resolve() : askConsent('youtube').then(resolve, reject);
+});</code></pre>
+        </div>
+      </article>
+
+      <article class="feature text-only" id="language">
+        <div>
+          <div class="tags"><span class="tag">Accessibility</span></div>
+          <h3>Text language</h3>
+          <p>Setting the <code>lang</code> and <code>dir</code> of a text selection is handled by the core "Language" format since 1.9.0. Content created with the plugin's previous toolbar button keeps its attributes when edited.</p>
+        </div>
+      </article>
+    </section>
+
+    <section id="install">
+      <h2>Install</h2>
+      <p>Requires PHP 7.4 or later. The built files are in the repository, so there is no build step.</p>
+
+      <ol class="steps">
+        <li>
+          <p><strong>With Composer.</strong> The package is not on Packagist, so declare the GitHub repository first.</p>
+          <pre><code>composer config repositories.core-blocks-enhancer vcs https://github.com/corentin-gautier/core-blocks-enhancer
+composer require cgsoft/core-blocks-enhancer</code></pre>
+          <p>The package type is <code>wordpress-plugin</code>. It lands in your plugins folder if the project uses <a href="https://github.com/composer/installers">composer/installers</a>, as <a href="https://roots.io/bedrock/">Bedrock</a> does, and in <code>vendor/</code> otherwise.</p>
+          <p><strong>Or with Git.</strong> Clone the plugin into your plugins folder.</p>
+          <pre><code>cd wp-content/plugins
+git clone https://github.com/corentin-gautier/core-blocks-enhancer.git</code></pre>
+        </li>
+        <li>
+          <p>Activate <strong>Core Blocks Enhancer</strong> in the Plugins screen.</p>
+        </li>
+        <li>
+          <p>Open a post and select an image, button, paragraph or heading. The new panels are in the block sidebar.</p>
+        </li>
+      </ol>
+
+      <p class="note">The <code>robots.txt</code> rule that hides the front script from robots targets <code>/wp-content/plugins/core-blocks-enhancer/</code>. If the plugin is installed elsewhere, as with Bedrock's <code>app/plugins</code>, add your own rule for <code>build/front.min.js</code>.</p>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Core Blocks Enhancer, by Corentin Gautier. Released under the <a href="https://github.com/corentin-gautier/core-blocks-enhancer/blob/main/LICENSE">GPL-3.0</a> license.</span>
+    <span><a href="https://github.com/corentin-gautier/core-blocks-enhancer/issues">Report an issue</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -3,7 +3,7 @@ stages:
 
 variables:
   DOCKER_DRIVER: overlay
-  IGNORE: --ignore=composer.lock --ignore=vendor --ignore=.gitlab-ci.yml --ignore=.gitignore --ignore=package.json --ignore=package-lock.json --ignore=src
+  IGNORE: --ignore=composer.lock --ignore=vendor --ignore=.gitlab-ci.yml --ignore=.gitignore --ignore=package.json --ignore=package-lock.json --ignore=src --ignore=docs
 
 build:publish:
   stage: publish
