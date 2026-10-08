@@ -17,7 +17,8 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Core Blocks Enhancer: WordPress core blocks, with the options they are missing">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#3858e9">
+<meta name="theme-color" content="#f4f3ee" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0e0f0c" media="(prefers-color-scheme: dark)">
 <meta name="google-site-verification" content="ZzQ0D93tWYmlaJGBHx_q1Hk4xZMRt_zgjYe9ATnlUfM" />
 <script type="application/ld+json">
 {
@@ -45,33 +46,37 @@
   ]
 }
 </script>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%233858e9'/%3E%3Cpath d='M9 9h6v6H9zM17 17h6v6h-6z' fill='%23fff'/%3E%3Cpath d='M17 9h6v6h-6zM9 17h6v6H9z' fill='%23fff' opacity='.45'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23c8f031'/%3E%3Cpath d='M9 9h6v6H9zM17 17h6v6h-6z' fill='%23111210'/%3E%3Cpath d='M17 9h6v6h-6zM9 17h6v6H9z' fill='%23111210' opacity='.45'/%3E%3C/svg%3E">
 <style>
   :root {
-    --bg: #fbfbfa;
-    --surface: #ffffff;
-    --text: #1e1e1e;
-    --muted: #5f6368;
-    --border: #e2e2df;
-    --accent: #3858e9;
-    --accent-text: #ffffff;
-    --code-bg: #f1f1ee;
-    --tag-bg: #eceffd;
-    --tag-text: #2a45c4;
-    --shot-bg: #ffffff;
+    --bg: #f4f3ee;
+    --surface: #fbfaf6;
+    --text: #111210;
+    --muted: #55584f;
+    --border: #c9c9be;
+    --accent: #c8f031;
+    --on-accent: #111210;
+    --accent-text: #3f6212;
+    --code-bg: #e8e7df;
+    --screen: #111210;
+    --marker: linear-gradient(transparent 60%, var(--accent) 60% 92%, transparent 92%);
+    --marker-ink: currentColor;
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+    --rule: 1.5px;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #141516;
-      --surface: #1c1e20;
-      --text: #ececec;
-      --muted: #a3a7ad;
-      --border: #2e3135;
-      --accent: #8fa3ff;
-      --accent-text: #10131f;
-      --code-bg: #24272a;
-      --tag-bg: #232a4a;
-      --tag-text: #b3c0ff;
+      --bg: #0e0f0c;
+      --surface: #171914;
+      --text: #eeefe6;
+      --muted: #a4a798;
+      --border: #33352d;
+      --accent-text: #c8f031;
+      --code-bg: #1f211b;
+      --screen: #191b15;
+      --marker: none;
+      --marker-ink: var(--accent);
     }
   }
   * { box-sizing: border-box; }
@@ -81,70 +86,74 @@
     margin: 0;
     background: var(--bg);
     color: var(--text);
-    font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    font: 16px/1.6 var(--sans);
   }
-  a { color: var(--accent); text-underline-offset: 3px; }
-  a:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
-  .wrap { max-width: 920px; margin: 0 auto; padding: 0 16px; }
+  a { color: inherit; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  a:hover { background: var(--accent); color: var(--on-accent); }
+  a:focus-visible, summary:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }
 
-  header.top { border-bottom: 1px solid var(--border); }
-  header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
-  .brand { display: flex; align-items: center; gap: 10px; font-weight: 600; color: inherit; text-decoration: none; }
+  header.top { border-bottom: var(--rule) solid var(--text); }
+  header.top .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; padding-block: 14px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: -0.02em; text-decoration: none; }
+  .brand:hover { background: none; color: inherit; }
   .brand svg { flex-shrink: 0; }
-  nav { display: flex; gap: 18px; font-size: 14px; }
-  nav a { color: var(--muted); text-decoration: none; }
-  nav a:hover { color: var(--text); }
+  nav { display: flex; gap: 18px; font: 13px var(--mono); }
+  nav a { text-decoration: none; }
 
-  .hero { padding: 72px 0 56px; }
-  .hero h1 { margin: 0 0 16px; font-size: clamp(34px, 6vw, 52px); line-height: 1.1; letter-spacing: -0.02em; text-wrap: balance; }
-  .hero p { margin: 0 0 28px; max-width: 60ch; font-size: 19px; color: var(--muted); text-wrap: pretty; }
+  .hero { padding: clamp(48px, 9vw, 96px) 0 56px; }
+  .hero h1 { margin: 0 0 24px; font-size: clamp(38px, 7.4vw, 76px); font-weight: 700; line-height: 0.98; letter-spacing: -0.04em; text-wrap: balance; }
+  .hero h1 em { background: var(--marker); color: var(--marker-ink); font-style: normal; font-weight: 300; }
+  .hero p { margin: 0 0 32px; max-width: 60ch; font-size: 19px; line-height: 1.5; color: var(--muted); text-wrap: pretty; }
   .actions { display: flex; flex-wrap: wrap; gap: 12px; }
-  .btn { display: inline-block; padding: 10px 18px; border: 1px solid var(--border); border-radius: 6px; background: var(--surface); color: var(--text); font-weight: 500; text-decoration: none; }
-  .btn:hover { border-color: var(--muted); }
-  .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-text); }
-  .btn.primary:hover { filter: brightness(1.08); }
+  .btn { display: inline-block; padding: 13px 22px; border: var(--rule) solid var(--text); color: var(--text); font-weight: 600; line-height: 1.2; text-decoration: none; }
+  .btn::after { content: " →"; content: " →" / ""; font-family: var(--mono); }
+  .btn.primary { background: var(--text); color: var(--bg); }
+  .btn:hover, .btn.primary:hover { background: var(--accent); color: var(--on-accent); }
 
-  .index { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1px; margin: 0; padding: 0; list-style: none; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
-  .index a { display: block; height: 100%; padding: 16px 18px; background: var(--surface); color: inherit; text-decoration: none; }
-  .index a:hover { background: var(--code-bg); }
-  .index strong { display: block; }
+  .index { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--rule); margin: 0; padding: var(--rule); list-style: none; background: var(--text); }
+  .index a { display: block; height: 100%; padding: 16px 18px; background: var(--bg); color: inherit; text-decoration: none; }
+  .index a:hover { background: var(--accent); color: var(--on-accent); }
+  .index strong { display: block; letter-spacing: -0.01em; }
   .index span { font-size: 14px; color: var(--muted); }
+  .index a:hover span { color: inherit; }
 
-  section { padding: 56px 0 0; }
-  h2 { margin: 0 0 8px; font-size: 28px; line-height: 1.2; letter-spacing: -0.01em; text-wrap: balance; }
-  h2 + p { margin-top: 0; color: var(--muted); }
+  main { counter-reset: section; }
+  section { padding: 72px 0 0; counter-increment: section; }
+  h2 { margin: 0 0 12px; font-size: clamp(30px, 4.8vw, 46px); font-weight: 700; line-height: 1; letter-spacing: -0.04em; text-wrap: balance; }
+  h2::before { content: counter(section, decimal-leading-zero); content: counter(section, decimal-leading-zero) / ""; display: block; margin-bottom: 18px; color: var(--accent-text); font: 500 13px/1 var(--mono); letter-spacing: 0.08em; }
+  h2 + p { margin-top: 0; color: var(--muted); font-size: 18px; }
 
-  .feature { display: grid; grid-template-columns: minmax(0, 1fr) 282px; gap: 32px; align-items: start; padding: 32px 0; border-top: 1px solid var(--border); scroll-margin-top: 16px; }
+  .feature { display: grid; grid-template-columns: minmax(0, 1fr) 282px; gap: 32px; align-items: start; padding: 32px 0; border-top: var(--rule) solid var(--text); scroll-margin-top: 16px; }
   .feature.text-only { grid-template-columns: minmax(0, 1fr); }
-  .feature:first-of-type { margin-top: 24px; }
-  .feature h3 { margin: 8px 0; font-size: 21px; }
+  .feature:first-of-type { margin-top: 32px; }
+  .feature h3 { margin: 12px 0 8px; font-size: 24px; line-height: 1.15; letter-spacing: -0.03em; }
   .feature p, .feature ul { margin: 0 0 12px; max-width: 62ch; }
   .feature ul { padding-left: 20px; }
   .feature li { margin-bottom: 6px; }
-  .tags { display: flex; flex-wrap: wrap; gap: 6px; font-size: 12.5px; }
-  .tag { padding: 2px 8px; border-radius: 99px; background: var(--tag-bg); color: var(--tag-text); font-weight: 500; }
-  .tag.auto { background: var(--code-bg); color: var(--muted); }
-  .where { font-size: 14px; color: var(--muted); }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; font: 500 11.5px var(--mono); letter-spacing: 0.08em; text-transform: uppercase; }
+  .tag { padding: 2px 8px; border: 1px solid currentColor; }
+  .tag.auto { border-color: var(--accent); background: var(--accent); color: var(--on-accent); }
+  .where { font: 13px/1.5 var(--mono); color: var(--muted); }
   figure { margin: 0; }
-  figure img { display: block; width: 100%; height: auto; border: 1px solid var(--border); border-radius: 6px; background: var(--shot-bg); }
+  figure img { display: block; width: 100%; height: auto; border: var(--rule) solid var(--text); background: #fff; }
 
-  code, kbd { font: 0.875em/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
-  :not(pre) > code, kbd { padding: 2px 5px; border-radius: 4px; background: var(--code-bg); overflow-wrap: anywhere; }
-  pre { margin: 0 0 12px; padding: 14px 16px; border: 1px solid var(--border); border-radius: 6px; background: var(--code-bg); overflow-x: auto; }
+  code, kbd { font: 0.875em/1.5 var(--mono); }
+  :not(pre) > code, kbd { padding: 2px 5px; background: var(--code-bg); overflow-wrap: anywhere; }
+  pre { margin: 0 0 12px; padding: 16px 18px; background: var(--screen); color: #eeefe6; overflow-x: auto; }
   pre code { font-size: 13.5px; }
 
-  .steps { margin: 24px 0 0; padding: 0; list-style: none; counter-reset: step; }
-  .steps > li { position: relative; padding: 0 0 20px 44px; counter-increment: step; }
-  .steps > li::before { content: counter(step); position: absolute; left: 0; top: 0; width: 28px; height: 28px; border: 1px solid var(--border); border-radius: 50%; background: var(--surface); font-size: 14px; font-weight: 600; line-height: 26px; text-align: center; }
+  .steps { margin: 32px 0 0; padding: 0; list-style: none; counter-reset: step; }
+  .steps > li { position: relative; padding: 0 0 20px 48px; counter-increment: step; }
+  .steps > li::before { content: counter(step); position: absolute; left: 0; top: 0; width: 28px; height: 28px; background: var(--accent); color: var(--on-accent); font: 600 13px/28px var(--mono); text-align: center; }
   .steps p { margin: 0 0 10px; }
-  .note { margin: 0; padding: 14px 16px; border-left: 3px solid var(--accent); background: var(--surface); border-radius: 0 6px 6px 0; }
+  .note { margin: 0; padding: 14px 16px; border-left: 4px solid var(--accent); background: var(--surface); }
 
-  footer { margin-top: 72px; padding: 24px 0 40px; border-top: 1px solid var(--border); font-size: 14px; color: var(--muted); }
+  footer { margin-top: 80px; padding: 24px 0 40px; border-top: var(--rule) solid var(--text); font: 12.5px/1.6 var(--mono); color: var(--muted); }
   footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
 
   @media (max-width: 720px) {
     nav a.hide-sm { display: none; }
-    .hero { padding: 48px 0 40px; }
     .feature { grid-template-columns: minmax(0, 1fr); gap: 20px; }
     figure { max-width: 282px; }
   }
@@ -155,7 +164,7 @@
 <header class="top">
   <div class="wrap">
     <a class="brand" href="#top">
-      <svg width="24" height="24" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#3858e9"/><path d="M9 9h6v6H9zM17 17h6v6h-6z" fill="#fff"/><path d="M17 9h6v6h-6zM9 17h6v6H9z" fill="#fff" opacity=".45"/></svg>
+      <svg width="24" height="24" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" fill="#c8f031"/><path d="M9 9h6v6H9zM17 17h6v6h-6z" fill="#111210"/><path d="M17 9h6v6h-6zM9 17h6v6H9z" fill="#111210" opacity=".45"/></svg>
       Core Blocks Enhancer
     </a>
     <nav aria-label="Main">
@@ -171,7 +180,7 @@
   <div class="wrap">
 
     <div class="hero">
-      <h1>WordPress core blocks, with the options they are missing</h1>
+      <h1>WordPress core blocks, with the options they are <em>missing</em></h1>
       <p>Core Blocks Enhancer is a free WordPress plugin that adds accessibility, SEO and performance options to the Gutenberg blocks you already use. No new blocks to learn, nothing changes until you turn an option on.</p>
       <div class="actions">
         <a class="btn primary" href="#install">Install the plugin</a>
@@ -312,7 +321,7 @@ git clone https://github.com/corentin-gautier/core-blocks-enhancer.git</code></p
 
 <footer>
   <div class="wrap">
-    <span>Core Blocks Enhancer, by Corentin Gautier. Released under the <a href="https://github.com/corentin-gautier/core-blocks-enhancer/blob/main/LICENSE">GPL-3.0</a> license.</span>
+    <span>Core Blocks Enhancer, by <a href="https://corentin-gautier.github.io/">Corentin Gautier</a>. Released under the <a href="https://github.com/corentin-gautier/core-blocks-enhancer/blob/main/LICENSE">GPL-3.0</a> license.</span>
     <span><a href="https://github.com/corentin-gautier/core-blocks-enhancer/issues">Report an issue</a></span>
   </div>
 </footer>
